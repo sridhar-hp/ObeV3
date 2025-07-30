@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useNavigate } from 'react-router-dom';
 function LoginPage()
 {
     const [staffId,setStaffId]=useState([]);
@@ -7,9 +7,15 @@ function LoginPage()
     
     console.log(staffId,staffPass);
 
-    
-    return(
+    const handleLogin()
+    {
+    const res = awite axios.post('http://localhost:5000/login');
+        const roll = res.data.Role;
 
+        if(roll=="Admin")
+        {
+            
+    return(
         <>
         <h1>hello</h1>
         <div> 
