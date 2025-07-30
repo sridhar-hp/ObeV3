@@ -7,13 +7,33 @@ function LoginPage()
     
     console.log(staffId,staffPass);
 
-    const handleLogin()
+    const HandleLogin()
     {
-    const res = awite axios.post('http://localhost:5000/login');
-        const roll = res.data.Role;
+    const res = awite axios.post('http://localhost:5000/login',{
+        staffId,
+        staffPass
+    }
+      )
+        if (res.data.success) {
+        const roll = res.data.user.Role;
 
-        if(roll=="Admin")
-        {
+        if (roll === "Admin") {
+          navigate(`/Admin/${staff_id}`);
+        }
+
+        else {
+          navigate(`/Layout/${staff_id}`);
+        }
+      }
+      else {
+        setMessage("login failed");
+      }
+    }
+    catch (err) {
+      alert("something wrong");
+      console.log(staff_id, staff_pass)
+    }
+  }
             
     return(
         <>
