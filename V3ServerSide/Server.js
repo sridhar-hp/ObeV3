@@ -7,12 +7,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/login',async,(req,res),
-    const {staffId,staffPass}=req.data;
-	await axios.get(courceMaster{whare{staffId,staffPass}});
-
-	
-
 const db = mysql.createConnection({
     host: process.env.HOST,
     user:process.env.USER,
@@ -20,6 +14,17 @@ const db = mysql.createConnection({
     database:process.env.DATABASE
 });
 
+app.post('/login',async,(req,res)=>{
+const {staffId,staffPass}=req.data;
+const user = await .courceMaster.findone(whare:{staffId,staffPass}
 
+if(user)
+{
+	res.status(200).json(success:true,message:"login success");
+}
+else{
+	res.status(500).json(success:false,message:"logun failed');
+}
+	});
 
 app.listen(5000,console.log("backend run on 5000"))
