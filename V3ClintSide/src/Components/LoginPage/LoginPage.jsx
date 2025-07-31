@@ -1,28 +1,34 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-function LoginPage()
-{
-    const [staffId,setStaffId]=useState([]);
-    const [staffPass,setStaffPass]=useState([]);
-    
-    console.log(staffId,staffPass);
+import axios from "axios";
 
-    const HandleLogin()
-    {
-    const res = awite axios.post('http://localhost:5000/login',{
+
+
+function LoginPage() {
+  const [staffId, setStaffId] = useState("");
+  const [staffPass, setStaffPass] = useState("");
+  const [message,setMessage] = useState("loging page");
+  
+  const navigate = useNavigate();
+  console.log(staffId, staffPass);
+
+  const HandleLogin = async () => {
+
+    try {
+      const res = await axios.post("http://localhost:5000/login", {
         staffId,
         staffPass
-    }
-      )
-        if (res.data.success) {
+      });
+
+      if (res.data.success) {
         const roll = res.data.user.Role;
 
         if (roll === "Admin") {
-          navigate(`/Admin/${staff_id}`);
+          navigate(`/Admin/${staffId}`);
         }
 
         else {
-          navigate(`/Layout/${staff_id}`);
+          navigate(`/Layout/${staffId}`);
         }
       }
       else {
@@ -30,30 +36,31 @@ function LoginPage()
       }
     }
     catch (err) {
+      console.log(err);
       alert("something wrong");
-      console.log(staff_id, staff_pass)
+      console.log(staffId, staffPass);
     }
   }
-            
-    return(
-        <>
-        <h1>hello</h1>
-        <div> 
-        
+
+  return (
+    <>
+      <h1>{message}</h1>
+      <div>
+
         <input className="input1"
-         placeholder="staffId"
-            value={staffId}
-            onChange={e=> setStaffId(e.target.value)}/>
+          placeholder="staffId"
+          value={staffId}
+          onChange={e => setStaffId(e.target.value)} />
 
         <input className="input2"
-         placeholder="staffPass"
-        value={staffPass}
-        onChange={e=>setStaffPass(e.target.value)}/>
- 		<button> LOGIN </button>
-        </div>
-        
-        
-        </>
-    )
+          placeholder="staffPass"
+          value={staffPass}
+          onChange={e => setStaffPass(e.target.value)} />
+        <button onClick={HandleLogin}> LOGIN </button>
+      </div>
+
+
+    </>
+  )
 }
 export default LoginPage;

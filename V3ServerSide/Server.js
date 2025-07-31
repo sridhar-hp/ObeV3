@@ -2,6 +2,7 @@ const express = require ('express');
 const cors = require('cors');
 require('dotenv').config();
 const mysql = require('mysql2');
+const {CourseMaping} = require ('/TABLE/CourseMaping');
 
 const app = express();
 app.use(cors());
@@ -14,17 +15,19 @@ const db = mysql.createConnection({
     database:process.env.DATABASE
 });
 
-app.post('/login',async,(req,res)=>{
-const {staffId,staffPass}=req.data;
-const user = await .courceMaster.findone(whare:{staffId,staffPass}
+app.post('/login',async (req,res)=>{
+const {staffId,staffPass}=req.body;
+
+const user = await CourseMaping.findOne({where:{staffId,staffPass}});
 
 if(user)
 {
-	res.status(200).json(success:true,message:"login success");
+	res.status(200).json({success:true,message:"login success",user});
 }
 else{
-	res.status(500).json(success:false,message:"logun failed');
+	res.status(500).json({success:false,message:"logun failed"});
 }
 	});
 
-app.listen(5000,console.log("backend run on 5000"))
+app.listen(5000,
+    ()=>{console.log("backend run on 5000")});
