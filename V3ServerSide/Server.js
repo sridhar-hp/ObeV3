@@ -7,6 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.post('/login',async,(req,res),
+    const {staffId,staffPass}=req.data;
+	await axios.get(courceMaster{whare{staffId,staffPass}});
+
+	
+
 const db = mysql.createConnection({
     host: process.env.HOST,
     user:process.env.USER,
