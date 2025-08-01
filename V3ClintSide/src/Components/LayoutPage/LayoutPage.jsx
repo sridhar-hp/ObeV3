@@ -3,6 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import HomePage from "../HomePage/HomePage.jsx";
 import Classes from "../Classes/Classes.jsx";
 import ModifingPage from "../ModifingPage/ModifingPage.jsx";
+import './LayoutPage.css'
 
 function LayoutPage() {
   return (
@@ -11,7 +12,7 @@ function LayoutPage() {
       <div>
         <NavLink to="HomePage"> Home </NavLink>
           <NavLink to="Classes"> classes </NavLink>
-         <NavLink to="ModifingPage"> managing staff </NavLink>
+        
        
 
       </div>

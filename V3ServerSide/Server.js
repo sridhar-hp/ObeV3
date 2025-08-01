@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 const mysql = require('mysql2');
 const { CourseMaping } = require('./TABLE/CourseMaping');
+//const {staffmaster}= require('./TABLE/StaffMaster');
 
 const app = express();
 app.use(cors());
@@ -20,7 +21,8 @@ app.post('/login', async (req, res) => {
         const { staffId, staffPass } = req.body;
         const user = await CourseMaping.findOne({ where: { staff_id: staffId, staff_pass: staffPass } });
         if (user) {
-            res.status(200).json({ success: true, message: "login success", user });
+            console.log(user);
+            res.json({ success: true, message: "login success", user });
         }
         else {
             res.status(401).json({ success: false, message: "logun failed" });
