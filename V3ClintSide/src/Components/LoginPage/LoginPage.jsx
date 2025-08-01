@@ -24,10 +24,14 @@ function LoginPage() {
         const roll = res.data.user.Role;
 
         if (roll === "Admin") {
+          setMessage("login success");
+          alert("login success");
           navigate(`/Admin/${staffId}`);
         }
 
         else {
+          setMessage("login success");
+          alert("login success");
           navigate(`/Layout/${staffId}`);
         }
       }
