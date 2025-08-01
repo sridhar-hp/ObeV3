@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+//import jmc from '../Images/JmcV3.png';
 
 
 
@@ -48,9 +49,12 @@ function LoginPage() {
 
   return (
     <>
-      <h1>{message}</h1>
-      <div>
+    <div>
 
+    <img src='/Images/JmcV3.png' alt="jmclogo" />
+    </div>
+    <div>
+      <h1>{message}</h1>
         <input className="input1"
           placeholder="staffId"
           value={staffId}
@@ -62,8 +66,6 @@ function LoginPage() {
           onChange={e => setStaffPass(e.target.value)} />
         <button onClick={HandleLogin}> LOGIN </button>
       </div>
-
-
     </>
   )
 }
