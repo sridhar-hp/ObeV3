@@ -1,0 +1,28 @@
+.continar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 32px;
+    justify-content: flex-start;
+    align-items: flex-start; /* Align boxes to top, not stretch */
+}
+
+.course.box {
+    background: linear-gradient(135deg, #e3f0ff 0%, #f9e3ff 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 6px 14px; /* Minimized padding for less height */
+    min-height: 70px;  /* Slightly increased box height */
+    max-height: 70px;  /* Height is fixed and equal */
+    min-width: 70px;   /* Width equal to height */
+    max-width: 70px;   /* Width equal to height */
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    border: 2px solid #ff8c42;
+    box-shadow: 0 4px 16px rgba(255, 140, 66, 0.15);
+    flex: 0 0 auto; /* Only take content size */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: box-shadow 0.2s, transform 0.2s;
+    height: auto; /* Remove stretch */
+}

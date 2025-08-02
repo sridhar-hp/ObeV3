@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 const mysql = require('mysql2');
 const { CourseMaping } = require('./TABLE/CourseMaping');
+const { StaffMaster } = require('./TABLE/StaffMaster');
 //const {staffmaster}= require('./TABLE/StaffMaster');
 
 const app = express();
@@ -36,6 +37,20 @@ app.post('/login', async (req, res) => {
 
 });
 
+// ================================================================================================================
+
+app.get('/staff/:id/classes',async(req,res)=>{
+    const staffId = req.params.id;
+    try {
+        const hour = await StaffMaster.findAll({where:{staff_id:staffId}});
+        if(hour)
+        res.json(hour);
+    }
+    catch(err)
+    {
+        console.error(err);
+    }
+});
 
 app.listen(5000,() => {
      console.log("backend run on 5000") 

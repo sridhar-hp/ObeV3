@@ -1,5 +1,5 @@
 
-.loginpopup {
+.popup {
     max-width: 400px;
     margin: 60px auto;
     padding: 40px 30px;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.loginlogo {
+.logo {
     width: 100px;
     height: 100px;
     margin: 20px auto;
@@ -26,8 +26,8 @@ h1 {
     text-align: center;
 }
 
-.logininput1,
-.logininput2 {
+.input1,
+.input2 {
     width: 100%;
     padding: 12px 14px;
     margin-bottom: 16px;
@@ -38,8 +38,8 @@ h1 {
     box-sizing: border-box;
 }
 
-.logininput1:focus,
-.logininput2:focus {
+.input1:focus,
+.input2:focus {
     border-color: #1976d2;
     outline: none;
 }

@@ -22,7 +22,7 @@ function LoginPage() {
             });
 
             if (res.data.success) {
-                const roll = res.data.Role;
+                const roll = res.data.user.Role;
                 console.log(roll);
 
                 if (roll === "Admin") {
@@ -49,19 +49,19 @@ function LoginPage() {
     }
 
     return (
-        <div className="background">
-            <div className="popup">
+        <div className="loginbackground">
+            <div className="loginpopup">
                 <div >
-                    <img className="logo" src='/Images/JmcV3.png' alt="jmclogo" />
+                    <img className="loginlogo" src='/Images/JmcV3.png' alt="jmclogo" />
                 </div>
                 <div>
                     <h1>{message}</h1>
-                    <input className="input1"
+                    <input className="logininput1"
                         placeholder="staffId"
                         value={staffId}
                         onChange={e => setStaffId(e.target.value)} />
 
-                    <input className="input2"
+                    <input className="logininput2"
                         placeholder="staffPass"
                         type="password"
                         value={staffPass}
