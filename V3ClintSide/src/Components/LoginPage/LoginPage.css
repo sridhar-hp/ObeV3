@@ -1,4 +1,26 @@
-
+/* //login.css *i want to designe my login page i should like professional full stack developer dont use globle selectors and this is by code/
+.loginbackground {
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(120deg, #e3f2fd 0%, #b2ffb2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    transition: background 0.4s;
+    /* Add a subtle pattern overlay for depth *
+    position: relative;
+    overflow: hidden;
+}
+.loginbackground::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("https://www.transparenttextures.com/patterns/cubes.png");
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+}
 .loginpopup {
     max-width: 400px;
     margin: 60px auto;
@@ -18,7 +40,7 @@
     display: block;
 }
 
-h1 {
+.login h1 {
     font-size: 1.5rem;
     font-weight: 600;
     color: #222;
@@ -61,7 +83,7 @@ button {
 button:hover {
     background: #1565c0;
 }
-body {
+.LoginPagebody {
     background: linear-gradient(135deg, #e3f2fd 0%, #6eff6e 100%);
     min-height: 100vh;
     margin: 0;

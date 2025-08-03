@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 //import jmc from '../Images/JmcV3.png';
-import './LoginPage.css';
+// import './LoginPage.css';
+import styles from './LoginPage.module.css';
 
 
 function LoginPage() {
@@ -49,19 +50,19 @@ function LoginPage() {
     }
 
     return (
-        <div className="loginbackground">
-            <div className="loginpopup">
-                <div >
-                    <img className="loginlogo" src='/Images/JmcV3.png' alt="jmclogo" />
+        <div className={styles.loginbackground}>
+            <div className={styles.loginpopup}>
+                <div className={styles.loginlogo} >
+                    <img className={styles.loginlogo} src='/Images/JmcV3.png' alt="jmclogo" />
                 </div>
-                <div>
+                <div className={styles.login}>
                     <h1>{message}</h1>
-                    <input className="logininput1"
+                    <input className={styles.logininput1}
                         placeholder="staffId"
                         value={staffId}
                         onChange={e => setStaffId(e.target.value)} />
 
-                    <input className="logininput2"
+                    <input className={styles.logininput2}
                         placeholder="staffPass"
                         type="password"
                         value={staffPass}
