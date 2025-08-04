@@ -17,17 +17,21 @@ function App() {
                 <Route path="/" element={<LoginPage />} />
 
                 <Route path="/LayoutPage/:id" element={<LayoutPage />} >
+                    <Route index element={<HomePage />}/>
                     <Route path="HomePage" element={<HomePage />} />
                     <Route path="Classes" element={<Classes />} />
                     <Route path="*" element={<ErrorPage />} />
 
                 </Route>
                 <Route path="/AdminPage/:id" element={<AdminPage />} >
+                <Route index element={<HomePage />} />
                     <Route path="HomePage" element={<HomePage />} />
-                    <Route path="ModifingPage" element={<ModifingPage />}/>
-                    <Route path="Newstaff" element={<NewStaffPage/>}/>
-                    <Route path="Editstaff" element={<EditStaffPage />} />
-                    {/* </Route> */}
+
+
+                    <Route path="ModifingPage" element={<ModifingPage />}>
+                        <Route path="NewStaff" element={<NewStaffPage />} />
+                        <Route path="EditStaff" element={<EditStaffPage />} />
+                    </Route>
                 </Route>
             </Routes>
         </BrowserRouter>

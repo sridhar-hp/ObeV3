@@ -1,15 +1,21 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import NewStaffPage from "../NewStaffPage/NewStaffPage.jsx";
+import { NavLink,Outlet } from "react-router-dom";
 
 
 function ModifingPage() {
   return (
     <div>
-      <h1>hello this is ModifingPage </h1>
+     
+      <div>
+      <NavLink to="NewStaff"><button className="m"> NEW STAFF</button></NavLink> 
+      <NavLink to= "EditStaff"> <button className="m">EDIT STAFF</button></NavLink>
+      </div>
 
-      {/* <NavLink to="NewStaffPage"> ADD STAFF </NavLink>
-      <NavLink to= "EditStaffPage"> EDIT STAFF </NavLink> */}
+      <div>
+
+        <Outlet/>
+      </div>
+
 
       
     </div>

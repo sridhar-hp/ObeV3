@@ -9,6 +9,7 @@ function LayoutPage() {
         <img src="/Images/JmcV3.png" alt="" />
         <NavLink className="layhomebutton" to="HomePage"> Home </NavLink>
           <NavLink to="Classes" className="layclassbutton"> classes </NavLink>
+          <NavLink to="../" className="laylogout"> LOGOUT </NavLink>
       </div>
 <div className="laymaincontent">
 

@@ -15,10 +15,11 @@ function Classes() {
         const ccourses= async () => {
             try {
                 const res = await axios.get(`http://localhost:5000/staff/${id}/classes`)
-               .then((res=>{ setCourses(res.data)
+               //.then((res=>{
+                 setCourses(res.data);
               
-                console.log(res.data)}));
-                console.log("id from params", id);
+                //console.log(res.data)}));
+              //  console.log("id from params", id);
 
             }
             catch (err) {

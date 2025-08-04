@@ -1,41 +1,44 @@
 import React from "react";
-import {useState} from "reactrouterdom";
+import {useState} from "react";
 
 function NewStaffPage() {
-  const [newStaff,setNewStaff]=useState();
+  const [newStaff,setNewStaff]=useState({
+    
+  });
 
   
   return (
+    <>
     <div>
       <h1>New Staff Page</h1>
      
       <p>This is where you can add new staff members.</p>
    <div> 
-      <div> 
+      <div > 
       <input placeholder="staffname"
-        name="staffName"> </input>
+        name="staffName"/> 
       </div>
       <div> 
         
       <input placeholder="staffid"
-        name="staffId"> </input>
+        name="staffId"/>
      </div>
         <div> 
         <input placeholder="class"
-          name="class"> </input>
+          name="class"/> 
      </div>
         <div> 
         <input placeholder="debartment"
-          name="dbt"> </input>
+          name="dbt"/>
      </div>
         <div> 
       
           <input placeholder="semyear"
-            name="sem"> </input>
+            name="sem"/>
     </div>
          </div>
         </div>
-     
+     </>
   );
 }
 export default NewStaffPage;
