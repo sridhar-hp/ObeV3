@@ -8,8 +8,10 @@ function ModifingPage() {
     <div>
       <h1>hello this is ModifingPage </h1>
 
-      <NavLink to="NewStaffPage"> ADD STAFF </NavLink>
-      <NavLink to= "EditStaffPage"> EDIT STAFF </NavLink>
+      {/* <NavLink to="NewStaffPage"> ADD STAFF </NavLink>
+      <NavLink to= "EditStaffPage"> EDIT STAFF </NavLink> */}
+
+      
     </div>
   );
 }

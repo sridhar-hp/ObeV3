@@ -1,0 +1,100 @@
+/* Outer container (apply manually in JSX if needed) */
+.adlayout {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8fafc;
+}
+
+/* Sidebar */
+.adsidebar {
+    width: 250px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+    box-shadow: 4px 0 16px rgb(255, 255, 255);
+}
+
+/* Logo */
+.adimg {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0 2px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Common NavLink styles */
+.adnew,
+.adedit {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background-color: rgba(224, 247, 217, 0.507);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0.4px;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effects */
+.adnew:hover,
+.adedit:hover {
+    background-color: #0ea5e9;
+    color: #fff;
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(14, 164, 233, 0.789);
+}
+
+/* Main content */
+.admincontent {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 40px 48px;
+    border-radius: 0 12px 12px 0;
+    overflow-y: auto;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.03);
+}
+
+/* Responsive for small screens */
+@media (max-width: 900px) {
+    .adlayout {
+        flex-direction: column;
+    }
+
+    .adsidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 16px 8px;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .adimg {
+        width: 60px;
+        height: 60px;
+        margin: 0 16px 0 0;
+    }
+
+    .adnew,
+    .adedit {
+        margin-bottom: 0;
+        padding: 10px 14px;
+        font-size: 1rem;
+    }
+
+    .admincontent {
+        padding: 20px;
+        border-radius: 0 0 12px 12px;
+    }
+}
