@@ -51,11 +51,20 @@ app.get('/staff/:id/classes',async(req,res)=>{
         console.error(err);
     }
 });
-
+//==========================================================================================================================================
 //adimn page code start hear
+app.get('/Admin/stafdet',async(req,res)=>{
+    try{
+          const staffD = await StaffMaster.findAll();
+          res.json(staffD);
+    }
+    catch(err)
+    {
+        console.error(err);
+    }
+});
 
-
-
+//=======================================================================================================================================
 app.listen(5000,() => {
      console.log("backend run on 5000") 
     });
