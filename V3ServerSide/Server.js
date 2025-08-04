@@ -52,6 +52,10 @@ app.get('/staff/:id/classes',async(req,res)=>{
     }
 });
 
+//adimn page code start hear
+
+
+
 app.listen(5000,() => {
      console.log("backend run on 5000") 
     });
