@@ -72,8 +72,9 @@ app.delete('/Admin/:id',async(req,res)=>{
 try{
     // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
             const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
+            const deletecourse = await CourseMaping.destroy({ where:{ staff_id }});
 
-    if(deleteStaff)
+    if(deleteStaff || deletecourse )
     {
         res.status(200).json({success:true,message:"deletsucces"});
     }
