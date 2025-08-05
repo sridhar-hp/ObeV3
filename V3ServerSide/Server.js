@@ -4,6 +4,7 @@ require('dotenv').config();
 const mysql = require('mysql2');
 const { CourseMaping } = require('./TABLE/CourseMaping');
 const { StaffMaster } = require('./TABLE/StaffMaster');
+const { where } = require('sequelize');
 //const {staffmaster}= require('./TABLE/StaffMaster');
 
 const app = express();
@@ -64,7 +65,44 @@ app.get('/Admin/stafdet',async(req,res)=>{
     }
 });
 
-//=======================================================================================================================================
+// deleting code =======================================================================================================================================
+
+app.delete('/Admin/:id',async(req,res)=>{
+    const staff_id = req.params.id;
+try{
+    // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
+            const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
+
+    if(deleteStaff)
+    {
+        res.status(200).json({success:true,message:"deletsucces"});
+    }
+    else{
+        res.status(500).json({success:false,message:"canot delete"});
+    }
+
+}
+catch(err)
+{
+    console.error(err);
+}
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(5000,() => {
      console.log("backend run on 5000") 
     });
