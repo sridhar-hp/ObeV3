@@ -1,0 +1,62 @@
+/* Fullscreen background */
+.nsbg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0f7fa, #f1f5f9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* Popup card */
+.nspopup {
+    background: #ffffff;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Each input wrapper */
+.ns {
+    width: 100%;
+}
+
+/* Input fields */
+.ns1 {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Focus effect */
+.ns1:focus {
+    border-color: #0ea5e9;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+/* 
+Optional: Add submit button later */
+.nssubmit {
+    background-color: #0ea5e9;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nssubmit:hover {
+    background-color: #0284c7;
+}

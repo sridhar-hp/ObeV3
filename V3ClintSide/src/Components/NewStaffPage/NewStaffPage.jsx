@@ -1,41 +1,43 @@
 import React from "react";
 import {useState} from "react";
+import "./NewStaffPage.css";
 
 function NewStaffPage() {
   const [newStaff,setNewStaff]=useState({
+   staff
     
   });
 
+  const handleNewStaff=async()=>{
+
+
+  }
   
   return (
     <>
-    <div>
-      <h1>New Staff Page</h1>
-     
-      <p>This is where you can add new staff members.</p>
-   <div> 
-      <div > 
-      <input placeholder="staffname"
-        name="staffName"/> 
+    <div className="nsbg">
+   <div className="nspopup"> 
+
+      <div className="ns" > 
+      <input className="ns1" placeholder="staffname" name="staffName"/> 
       </div>
-      <div> 
-        
-      <input placeholder="staffid"
-        name="staffId"/>
-     </div>
-        <div> 
-        <input placeholder="class"
-          name="class"/> 
-     </div>
-        <div> 
-        <input placeholder="debartment"
-          name="dbt"/>
-     </div>
-        <div> 
-      
-          <input placeholder="semyear"
-            name="sem"/>
-    </div>
+
+      <div className="ns"> 
+      <input className="ns1" placeholder="staffid" name="staffId"/>
+      </div>
+
+        <div className="ns"> 
+        <input className="ns1" placeholder="class"name="class"/> 
+        </div>
+
+        <div className="ns"> 
+        <input className="ns1" placeholder="debartment" name="dbt"/>
+        </div>
+
+          <div className="ns"> 
+          <input className="ns1" placeholder="password" name="pass"/>
+         </div>
+          <button className="nssubmit" type="submit"> submit </button>
          </div>
         </div>
      </>
