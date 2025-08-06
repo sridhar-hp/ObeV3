@@ -11,22 +11,23 @@ import NewStaffPage from "./Components/NewStaffPage/NewStaffPage.jsx";
 import EditStaffPage from "./Components/EditStaffPage/EditStaffPage.jsx";
 
 function App() {
+
     return (
+        
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LoginPage />} />
 
                 <Route path="/LayoutPage/:id" element={<LayoutPage />} >
-                    <Route index element={<HomePage />}/>
+                    <Route index element={<HomePage />} />
                     <Route path="HomePage" element={<HomePage />} />
                     <Route path="Classes" element={<Classes />} />
                     <Route path="*" element={<ErrorPage />} />
 
                 </Route>
                 <Route path="/AdminPage/:id" element={<AdminPage />} >
-                <Route index element={<HomePage />} />
+                    <Route index element={<HomePage />} />
                     <Route path="HomePage" element={<HomePage />} />
-
 
                     <Route path="ModifingPage" element={<ModifingPage />}>
                         <Route path="NewStaff" element={<NewStaffPage />} />
@@ -35,7 +36,7 @@ function App() {
                 </Route>
             </Routes>
         </BrowserRouter>
-
     );
 }
+
 export default App;

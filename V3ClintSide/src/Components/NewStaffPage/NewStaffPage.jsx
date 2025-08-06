@@ -4,24 +4,22 @@ import "./NewStaffPage.css";
 import axios from 'axios';
 
 function NewStaffPage() {
+
     const [newstaff, setNewStaff] = useState({});
 
-
-    const handleNewStaff = async(event) => {
+    const handleNewStaff = async (event) => {
         event.preventDefault();// e.preventDefault();
         try {
             console.log(newstaff);
-
             const res = await axios.post("http://localhost:5000/Admin/newstaff", newstaff)
-            if(res.data.success)
-            {
-            alert("add success");
+            if (res.data.success) {
+                alert("add success");
             }
-            else{
+            else {
                 alert("canot add ");
             }
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
         }
     }
@@ -52,10 +50,9 @@ function NewStaffPage() {
                         <input className="ns1" placeholder="department" name="dept_name" onChange={handleInput} required />
                     </div>
 
-                     <div className="ns">
+                    <div className="ns">
                         <input className="ns1" placeholder="academic sem" name="academic_sem" onChange={handleInput} required />
                     </div>
-
 
                     <div className="ns">
                         <input className="ns1" placeholder="password" name="staff_pass" onChange={handleInput} required />
@@ -66,6 +63,7 @@ function NewStaffPage() {
         </>
     );
 }
+
 export default NewStaffPage;
 
 

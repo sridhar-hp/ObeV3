@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-//import jmc from '../Images/JmcV3.png';
-// import './LoginPage.css';
 import styles from './LoginPage.module.css';
 
 
@@ -27,8 +25,6 @@ function LoginPage() {
                 console.log(roll);
 
                 if (roll === "Admin") {
-                    // setMessage("login success");
-                    // alert("login success");
                     navigate(`/AdminPage/${staffId}`);
                 }
 
@@ -73,4 +69,5 @@ function LoginPage() {
         </div>
     )
 }
+
 export default LoginPage;

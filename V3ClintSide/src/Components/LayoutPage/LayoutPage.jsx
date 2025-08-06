@@ -8,15 +8,16 @@ function LayoutPage() {
       <div className="laysidebar">
         <img src="/Images/JmcV3.png" alt="" />
         <NavLink className="layhomebutton" to="HomePage"> Home </NavLink>
-          <NavLink to="Classes" className="layclassbutton"> classes </NavLink>
-          <NavLink to="../" className="laylogout"> LOGOUT </NavLink>
+        <NavLink to="Classes" className="layclassbutton"> classes </NavLink>
+        <NavLink to="../" className="laylogout"> LOGOUT </NavLink>
       </div>
-<div className="laymaincontent">
 
-  <Outlet />
-</div>
-      
+      <div className="laymaincontent">
+        <Outlet />
+      </div>
+
     </div>
   );
 }
+
 export default LayoutPage;  

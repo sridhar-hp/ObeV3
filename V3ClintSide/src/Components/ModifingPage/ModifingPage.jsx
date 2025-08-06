@@ -1,24 +1,21 @@
 import React from "react";
-import { NavLink,Outlet } from "react-router-dom";
-
+import { NavLink, Outlet } from "react-router-dom";
+import "./ModifingPage.css";
 
 function ModifingPage() {
+
   return (
     <div>
-     
-      <div>
-      <NavLink to="NewStaff"><button className="m"> NEW STAFF</button></NavLink> 
-      <NavLink to= "EditStaff"> <button className="m">EDIT STAFF</button></NavLink>
+      <div className="mp-container">
+        <NavLink to="NewStaff"><button className="mp"> NEW STAFF</button></NavLink>
+        <NavLink to="EditStaff"> <button className="mp">EDIT STAFF</button></NavLink>
       </div>
 
-      <div>
-
-        <Outlet/>
+      <div className="mcd">
+        <Outlet />
       </div>
-
-
-      
     </div>
   );
 }
+
 export default ModifingPage;

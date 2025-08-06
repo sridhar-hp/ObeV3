@@ -1,0 +1,25 @@
+.mp-container {
+  display: flex;
+  justify-content: flex-start; /* Align to left */
+  gap: 16px; /* space between buttons */
+  padding: 20px;
+}
+
+.mp {
+  padding: 10px 20px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mp:hover {
+  background-color: #135ba1;
+}
+
+.mcd {
+  padding: 20px;
+}
