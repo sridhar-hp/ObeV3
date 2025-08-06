@@ -1,65 +1,66 @@
-.editdetitbox {
-  padding: 2rem;
-  background-color: #f0f4f8;
-  min-height: 100vh;
-}
-
-.eul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.eli {
+/* Main container styling */
+.editdetitpopupbox {
+  max-width: 95%;
+  margin: 30px auto;
+  padding: 20px;
   background-color: #fff;
   border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
 }
 
-.eli:hover {
-  transform: scale(1.02);
+/* Table base style */
+.editdetitpopupbox table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 15px;
 }
 
-.eh1 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  color: #2c3e50;
+/* Header row */
+.esheding {
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-.eh3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: #34495e;
-}
-
-.eh5 {
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
-  color: #6c5ce7;
-}
-
-.ep {
-  font-size: 0.95rem;
-  color: #636e72;
-  margin-bottom: 0.8rem;
-}
-
-.ed {
-  background-color: #e74c3c;
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
+.esheding th {
+  padding: 14px;
+  border: 1px solid #ddd;
   font-weight: bold;
-  transition: background-color 0.2s ease;
+  text-transform: uppercase;
+  text-align: center;
 }
 
-.ed:hover {
+/* Body rows */
+.esbodycontent td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  color: #444;
+}
+
+/* Zebra stripe effect */
+.esbodycontent:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Hover effect */
+.esbodycontent:hover {
+  background-color: #f0f0f0;
+  transition: 0.2s ease-in-out;
+}
+
+/* Delete button */
+.esbodycontent button {
+  padding: 6px 12px;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.esbodycontent button:hover {
   background-color: #c0392b;
 }
