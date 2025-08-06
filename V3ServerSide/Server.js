@@ -40,71 +40,66 @@ app.post('/login', async (req, res) => {
 
 // ================================================================================================================
 
-app.get('/staff/:id/classes',async(req,res)=>{
+app.get('/staff/:id/classes', async (req, res) => {
     const staffId = req.params.id;
     try {
-        const hour = await StaffMaster.findAll({where:{staff_id:staffId}});
-        if(hour)
-        res.json(hour);
+        const hour = await StaffMaster.findAll({ where: { staff_id: staffId } });
+        if (hour)
+            res.json(hour);
     }
-    catch(err)
-    {
+    catch (err) {
         console.error(err);
     }
 });
 //==========================================================================================================================================
 //adimn page code start hear
-app.get('/Admin/stafdet',async(req,res)=>{
-    try{
-          const staffD = await StaffMaster.findAll();
-          res.json(staffD);
+app.get('/Admin/stafdet', async (req, res) => {
+    try {
+        const staffD = await StaffMaster.findAll();
+        res.json(staffD);
     }
-    catch(err)
-    {
+    catch (err) {
         console.error(err);
     }
 });
 
 // deleting code =======================================================================================================================================
 
-app.delete('/Admin/:id',async(req,res)=>{
+app.delete('/Admin/:id', async (req, res) => {
     const staff_id = req.params.id;
-try{
-    // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
-            const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
-            const deletecourse = await CourseMaping.destroy({ where:{ staff_id }});
+    try {
+        // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
+        const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
+        const deletecourse = await CourseMaping.destroy({ where: { staff_id } });
 
-    if(deleteStaff || deletecourse )
-    {
-        res.status(200).json({success:true,message:"deletsucces"});
+        if (deleteStaff || deletecourse) {
+            res.status(200).json({ success: true, message: "deletsucces" });
+        }
+        else {
+            res.status(500).json({ success: false, message: "canot delete" });
+        }
+
     }
-    else{
-        res.status(500).json({success:false,message:"canot delete"});
+    catch (err) {
+        console.error(err);
     }
 
-}
-catch(err)
-{
-    console.error(err);
-}
-    
 });
 
 // adding new staff ======================================================================================================================================
 
 
-app.post('/Admin/newstaff',async(req,res)=>{
-    const { staff_name,staff_id,course_title,dept_name, academic_sem,staff_pass }=req.body;
+app.post('/Admin/newstaff', async (req, res) => {
+    const { staff_name, staff_id, course_title, dept_name, academic_sem, staff_pass } = req.body;
     console.log("Incoming data:", req.body);
 
 
-       if(!staff_id || !staff_name || !course_title || !dept_name || !academic_sem || !staff_pass)
-        {
-           return res.status(400).json({success:false,message:"all input required"});
-        }
-        
-    try{
-        const adds = await StaffMaster.create({ 
+    if (!staff_id || !staff_name || !course_title || !dept_name || !academic_sem || !staff_pass) {
+        return res.status(400).json({ success: false, message: "all input required" });
+    }
+
+    try {
+        const adds = await StaffMaster.create({
             course_title,
             academic_sem,
             staff_name,
@@ -117,13 +112,12 @@ app.post('/Admin/newstaff',async(req,res)=>{
             staff_pass,
             staff_name
         });
-        res.status(201).json({ success:true,message:"staff create succesfully"});  
-     }
+        res.status(201).json({ success: true, message: "staff create succesfully" });
+    }
 
-    catch(err)
-    {
+    catch (err) {
         console.error("New Staff Error:", err.message);
-        res.status(500).json({success:false,message:"failed"});
+        res.status(500).json({ success: false, message: "failed" });
     }
 });
 
@@ -138,6 +132,6 @@ app.post('/Admin/newstaff',async(req,res)=>{
 
 
 
-app.listen(5000,() => {
-     console.log("backend run on 5000") 
-    });
+app.listen(5000, () => {
+    console.log("backend run on 5000")
+});
