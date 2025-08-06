@@ -93,6 +93,40 @@ catch(err)
 // adding new staff ======================================================================================================================================
 
 
+app.post('/Admin/newstaff',async(req,res)=>{
+    const { staff_name,staff_id,course_title,dept_name, academic_sem,staff_pass }=req.body;
+    console.log("Incoming data:", req.body);
+
+
+       if(!staff_id || !staff_name || !course_title || !dept_name || !academic_sem || !staff_pass)
+        {
+           return res.status(400).json({success:false,message:"all input required"});
+        }
+        
+    try{
+        const adds = await StaffMaster.create({ 
+            course_title,
+            academic_sem,
+            staff_name,
+            staff_id,
+            dept_name
+        });
+
+        const addc = await CourseMaping.create({
+            staff_id,
+            staff_pass,
+            staff_name
+        });
+        res.status(201).json({ success:true,message:"staff create succesfully"});  
+     }
+
+    catch(err)
+    {
+        console.error("New Staff Error:", err.message);
+        res.status(500).json({success:false,message:"failed"});
+    }
+});
+
 
 
 
