@@ -121,7 +121,29 @@ app.post('/Admin/newstaff', async (req, res) => {
     }
 });
 
+//==========================================================================================================================================
+//display all staff detiles
+app.get('/Admin/stafflist', async (req, res) => {
+    try {
+        const astaffD = await CourseMaping.findAll();
+        res.json(astaffD);
+    }
+    catch (err) {
+        console.error(err);
+    }
+});
 
+//==========================================================================================================================================
+//display all course detiles
+app.get('/Admin/courselist', async (req, res) => {
+    try {
+        const CourseD = await StaffMaster.findAll();
+        res.json(CourseD);
+    }
+    catch (err) {
+        console.error(err);
+    }
+});
 
 
 

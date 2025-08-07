@@ -41,6 +41,7 @@ function EditStaffPage() {
 
         <>
             <div className="editdetitpopupbox">
+                <button className="newstaff">new staff</button>
                 <table >
                     <thead >
                         <tr className="esheding">
@@ -60,7 +61,7 @@ function EditStaffPage() {
                             <td>{detiles.staff_id}</td>
                             <td>{detiles.course_title}</td>
                             <td>{detiles.academic_sem}</td>
-                            <td><button onClick={() => { handleDelet(detiles.staff_id) }}>delete</button></td>
+                            <td><button onClick={() => { handleDelet(detiles.staff_id) }}>delete</button> <button>edit</button></td>
                         </tr>
                     ))}
                     </tbody>

@@ -9,6 +9,8 @@ import AdminPage from "./Components/AdminPage/AdminPage.jsx";
 import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
 import NewStaffPage from "./Components/NewStaffPage/NewStaffPage.jsx";
 import EditStaffPage from "./Components/EditStaffPage/EditStaffPage.jsx";
+import StaffMaping from "./Components/StaffMaping/StaffMaping.jsx";
+import CourseMap from "./Components/CourseMaping/CourseMap.jsx";
 
 function App() {
 
@@ -32,6 +34,8 @@ function App() {
                     <Route path="ModifingPage" element={<ModifingPage />}>
                         <Route path="NewStaff" element={<NewStaffPage />} />
                         <Route path="EditStaff" element={<EditStaffPage />} />
+                        <Route path="StaffMaping" element={<StaffMaping />}/>
+                        <Route path="CourseMap" element={<CourseMap />}/>
                     </Route>
                 </Route>
             </Routes>

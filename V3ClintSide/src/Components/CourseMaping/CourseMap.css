@@ -1,0 +1,83 @@
+.courselistdetitpopupbox {
+  background-color: #f7f9fc;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 30px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 98%;
+  overflow-x: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+.newcourse {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.newcourse:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 60px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cheding th {
+  background-color: #003366;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ddd;
+}
+
+.cbodycontent td {
+  padding: 10px 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #fdfdfd;
+}
+
+.cbodycontent:hover {
+  background-color: #f1f8ff;
+}
+
+.cbodycontent button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  margin: 2px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s ease-in-out;
+}
+
+.cbodycontent button:hover {
+  background-color: #1e7e34;
+}
+
+.cbodycontent button:nth-child(1) {
+  background-color: #dc3545;
+}
+
+.cbodycontent button:nth-child(1):hover {
+  background-color: #a71d2a;
+}
