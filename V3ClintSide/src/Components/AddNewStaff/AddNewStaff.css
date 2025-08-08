@@ -1,0 +1,56 @@
+/* Background overlay for popup */
+.nsbg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent; /* parent already has dark overlay from StaffMaping */
+  padding: 20px;
+}
+
+/* White popup box */
+.nspopup {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input wrapper */
+.ns {
+  display: flex;
+}
+
+/* Input field */
+.ns1 {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.ns1:focus {
+  border-color: #007bff;
+}
+
+/* Submit button */
+.nssubmit {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nssubmit:hover {
+  background-color: #0056b3;
+}

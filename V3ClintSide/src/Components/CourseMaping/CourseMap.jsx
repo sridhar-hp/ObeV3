@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
+import { NavLink,Outlet } from "react-router-dom";
 import './CourseMap.css';
 
 function CourseMap() {
@@ -40,7 +41,7 @@ function CourseMap() {
 
         <>
             <div className="courselistdetitpopupbox">
-                <button className="newcourse">new staff</button>
+                <NavLink to="AddNewCourse"><button className="newcourse">new course</button></NavLink>
                 <table >
                     <thead >
                         <tr className="cheding">
@@ -81,6 +82,11 @@ function CourseMap() {
                     ))}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <div>
+                    <Outlet />
+                </div>
             </div>
         </>
 

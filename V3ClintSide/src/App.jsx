@@ -7,15 +7,16 @@ import ModifingPage from "./Components/ModifingPage/ModifingPage.jsx";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AdminPage from "./Components/AdminPage/AdminPage.jsx";
 import ErrorPage from "./Components/ErrorPage/ErrorPage.jsx";
-import NewStaffPage from "./Components/NewStaffPage/NewStaffPage.jsx";
-import EditStaffPage from "./Components/EditStaffPage/EditStaffPage.jsx";
+
 import StaffMaping from "./Components/StaffMaping/StaffMaping.jsx";
 import CourseMap from "./Components/CourseMaping/CourseMap.jsx";
+import AddNewStaff from "./Components/AddNewStaff/AddNewStaff.jsx";
+import AddNewCourse from "./Components/AddNewCourse/AddNewCourse.jsx";
 
 function App() {
 
     return (
-        
+
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LoginPage />} />
@@ -32,10 +33,12 @@ function App() {
                     <Route path="HomePage" element={<HomePage />} />
 
                     <Route path="ModifingPage" element={<ModifingPage />}>
-                        <Route path="NewStaff" element={<NewStaffPage />} />
-                        <Route path="EditStaff" element={<EditStaffPage />} />
-                        <Route path="StaffMaping" element={<StaffMaping />}/>
-                        <Route path="CourseMap" element={<CourseMap />}/>
+                        <Route path="StaffMaping" element={<StaffMaping />}>
+                            <Route path="AddNewStaff" element={<AddNewStaff />} />
+                        </Route>
+                        <Route path="CourseMap" element={<CourseMap />}>
+                            <Route path="AddNewcourse" element={<AddNewCourse />} />
+                        </Route>
                     </Route>
                 </Route>
             </Routes>

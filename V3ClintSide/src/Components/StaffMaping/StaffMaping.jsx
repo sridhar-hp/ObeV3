@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
 import "./StaffMaping.css";
+import { NavLink, Outlet } from "react-router-dom";
 
 function StaffMaping() {
 
@@ -36,12 +37,14 @@ function StaffMaping() {
     //         console.error("deleting error:", err);
     //     }
     // };
+
+
     return (
 
         <>
             <div className="stafflistdetitpopupbox">
-                <div className="nbutton">  <button className="newstaff">new staff</button> </div>
-               
+                <div className="nbutton"> <NavLink to="AddNewStaff"> <button className="newstaff">new staff</button></NavLink> </div>
+
                 <table >
                     <thead >
                         <tr className="slheding">
@@ -80,7 +83,13 @@ function StaffMaping() {
                     ))}
                     </tbody>
                 </table>
+            </div >
+            <div className="add-newstaff-popup-box">
+                <div className="popup-content">
+                    <Outlet />
+                </div>
             </div>
+
         </>
 
     );

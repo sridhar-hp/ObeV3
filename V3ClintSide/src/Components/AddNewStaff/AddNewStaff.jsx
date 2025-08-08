@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import "./NewStaffPage.css";
 import axios from 'axios';
-//no need
 
-function NewStaffPage() {
+
+function AddNewStaff() {
 
     const [newstaff, setNewStaff] = useState({});
 
@@ -12,7 +11,7 @@ function NewStaffPage() {
         event.preventDefault();// e.preventDefault();
         try {
             console.log(newstaff);
-            const res = await axios.post("http://localhost:5000/Admin/newstaff", newstaff)
+            const res = await axios.post("http://localhost:5000/Admin/addnewstaff", newstaff)
             if (res.data.success) {
                 alert("add success");
             }
@@ -44,15 +43,19 @@ function NewStaffPage() {
                     </div>
 
                     <div className="ns">
-                        <input className="ns1" placeholder="course title" name="course_title" onChange={handleInput} required />
+                        <input className="ns1" placeholder="staffcategory" name="staff_category" onChange={handleInput} required />
                     </div>
 
                     <div className="ns">
-                        <input className="ns1" placeholder="department" name="dept_name" onChange={handleInput} required />
+                        <input className="ns1" placeholder="staffdepartment" name="staff_dept" onChange={handleInput} required />
                     </div>
 
                     <div className="ns">
-                        <input className="ns1" placeholder="academic sem" name="academic_sem" onChange={handleInput} required />
+                        <input className="ns1" placeholder="deartment catagry" name="dept_catagry" onChange={handleInput} required />
+                    </div>
+
+                    <div className="ns">
+                        <input className="ns1" placeholder="role" name="Role" onChange={handleInput} required />
                     </div>
 
                     <div className="ns">
@@ -65,7 +68,7 @@ function NewStaffPage() {
     );
 }
 
-export default NewStaffPage;
+export default AddNewStaff;
 
 
 
