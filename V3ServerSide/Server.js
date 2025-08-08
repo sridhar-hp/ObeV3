@@ -53,15 +53,15 @@ app.get('/staff/:id/classes', async (req, res) => {
 });
 //==========================================================================================================================================
 //adimn page code start hear
-app.get('/Admin/stafdet', async (req, res) => {
-    try {
-        const staffD = await StaffMaster.findAll();
-        res.json(staffD);
-    }
-    catch (err) {
-        console.error(err);
-    }
-});
+// app.get('/Admin/stafdet', async (req, res) => {
+//     try {
+//         const staffD = await StaffMaster.findAll();
+//         res.json(staffD);
+//     }
+//     catch (err) {
+//         console.error(err);
+//     }
+// });
 
 // deleting code =======================================================================================================================================
 
@@ -89,29 +89,81 @@ app.delete('/Admin/:id', async (req, res) => {
 // adding new staff ======================================================================================================================================
 
 
-app.post('/Admin/newstaff', async (req, res) => {
-    const { staff_name, staff_id, course_title, dept_name, academic_sem, staff_pass } = req.body;
+app.post('/Admin/addnewstaff', async (req, res) => {
+    const { staff_id,
+            staff_pass,
+            staff_name,
+            staff_category,
+            staff_dept,
+            dept_catagry,
+            Role } = req.body;
     console.log("Incoming data:", req.body);
 
 
-    if (!staff_id || !staff_name || !course_title || !dept_name || !academic_sem || !staff_pass) {
+    if (!staff_id|| !staff_pass||!staff_name||!staff_category||!staff_dept||!dept_catagry||!Role) {
         return res.status(400).json({ success: false, message: "all input required" });
     }
 
     try {
-        const adds = await StaffMaster.create({
-            course_title,
-            academic_sem,
-            staff_name,
-            staff_id,
-            dept_name
-        });
+        
 
-        const addc = await CourseMaping.create({
+        const adds = await CourseMaping.create({
             staff_id,
             staff_pass,
-            staff_name
+            staff_name,
+            staff_category,
+            staff_dept,
+            dept_catagry,
+            Role,
         });
+        res.status(201).json({ success: true, message: "staff create succesfully" });
+    }
+
+    catch (err) {
+        console.error("New Staff Error:", err.message);
+        res.status(500).json({ success: false, message: "failed" });
+    }
+});
+
+// adding new course======================================================================================================================================
+
+
+app.post('/Admin/addnewcourse', async (req, res) => {
+    const { category,
+        batch,
+        dept_id,
+        degree,
+        dept_name,
+        semester,
+        section,
+        course_code,
+        staff_id,
+        staff_name,
+        course_title,
+        academic_sem } = req.body;
+    console.log("Incoming data:", req.body);
+
+
+    if (! category||!batch||!dept_id||!degree||!dept_name||!semester||!section||!course_code||!staff_id||!staff_name||!course_title||!academic_sem) {
+        return res.status(400).json({ success: false, message: "all input required" });
+    }
+
+    try {
+        const addc = await StaffMaster.create({
+        category,
+        batch,
+        dept_id,
+        degree,
+        dept_name,
+        semester,
+        section,
+        course_code,
+        staff_id,
+        staff_name,
+        course_title,
+        academic_sem 
+    });
+        
         res.status(201).json({ success: true, message: "staff create succesfully" });
     }
 
