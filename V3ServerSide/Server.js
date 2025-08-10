@@ -5,6 +5,7 @@ const mysql = require('mysql2');
 const { CourseMaping } = require('./TABLE/CourseMaping');
 const { StaffMaster } = require('./TABLE/StaffMaster');
 const { where } = require('sequelize');
+
 //const {staffmaster}= require('./TABLE/StaffMaster');
 
 const app = express();
@@ -51,28 +52,18 @@ app.get('/staff/:id/classes', async (req, res) => {
         console.error(err);
     }
 });
-//==========================================================================================================================================
-//adimn page code start hear
-// app.get('/Admin/stafdet', async (req, res) => {
-//     try {
-//         const staffD = await StaffMaster.findAll();
-//         res.json(staffD);
-//     }
-//     catch (err) {
-//         console.error(err);
-//     }
-// });
+
 
 // deleting code =======================================================================================================================================
 
-app.delete('/Admin/:id', async (req, res) => {
+app.delete('/Admin/staffdelet/:id', async (req, res) => {
     const staff_id = req.params.id;
     try {
         // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
-        const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
+      //  const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
         const deletecourse = await CourseMaping.destroy({ where: { staff_id } });
 
-        if (deleteStaff || deletecourse) {
+        if (deletecourse) {
             res.status(200).json({ success: true, message: "deletsucces" });
         }
         else {
