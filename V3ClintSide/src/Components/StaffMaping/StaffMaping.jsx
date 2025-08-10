@@ -7,6 +7,8 @@ import { NavLink, Outlet } from "react-router-dom";
 function StaffMaping() {
 
     const [allstaffDetils, setAllStaffDetiles] = useState([]);
+    const [showPopup,setShowPopup] = useState(false);
+    const [deleteId,setDeleteId] = useState(null);
 
     useEffect(() => {
 
@@ -27,23 +29,44 @@ function StaffMaping() {
         allstaffdetiles();
     }, []);
 
-    // const handleDelet = async (staff_id) => {//this is for deleting
-    //     try {
-    //         await axios.delete(`http://localhost:5000/Admin/staff/list${staff_id}`)
-    //         setStaffDetiles((Prev) => Prev.filter((items) => items.staff_id !== staff_id));
-    //         alert("delete success");
-    //     }
-    //     catch (err) {
-    //         console.error("deleting error:", err);
-    //     }
-    // };
 
+    const handleDeletclick = async (staff_id) => {//this is for deleting
+        try {
+            setDeleteId(staff_id);
+            setShowPopup(true);
+        }
+        catch (err) {
+            console.error("deleting error:", err);
+        }
+    };
+
+
+    const handledelete = async(deleteId)=>{
+        try
+        {
+            await axios.delete(`http://localhost:5000/Admin/staffdelet/${deleteId}`)
+            setAllStaffDetiles((prev)=> prev.filter((items)=>items.staff_id!==deleteId))
+            alert("success");
+            setShowPopup(false);
+             setDeleteId(null);
+        }
+        catch(err)
+        {
+            console.error(err);
+        }
+    }
+
+    // const cancled = () =>{
+    //      setDeleteId(null);
+    //         setShowPopup(false);
+
+    // }
 
     return (
 
         <>
             <div className="stafflistdetitpopupbox">
-                <div className="nbutton"> <NavLink to="AddNewStaff"> <button className="newstaff">new staff</button></NavLink> </div>
+                <div className="nbutton">  <button className="newstaff">new staff</button> </div>
 
                 <table >
                     <thead >
@@ -52,7 +75,7 @@ function StaffMaping() {
                             <th>NAME</th>
                             <th>STAFF ID</th>
                             <th>STAFF CATEGORY</th>
-                            <th>sTAFF PASS</th>
+                            <th>STAFF PASS</th>
                             <th>STAFF DEPARTMENT</th>
                             <th>DEPARTMENT CATOGRY</th>
                             <th>STAFF ROLE IN COLLAGE</th>
@@ -73,7 +96,7 @@ function StaffMaping() {
                             <td>
                                 <td>
                                     <div className="action-buttons">
-                                        <button className="delete-btn" onClick={() => handleDelet(alldetiles.staff_id)}>Delete</button>
+                                        <button className="delete-btn" onClick={() => handleDeletclick(alldetiles.staff_id)}>Delete</button>
                                         <button className="edit-btn">Edit</button>
                                     </div>
                                 </td>
@@ -83,13 +106,22 @@ function StaffMaping() {
                     ))}
                     </tbody>
                 </table>
-            </div >
-            <div className="add-newstaff-popup-box">
-                <div className="popup-content">
-                    <Outlet />
-                </div>
-            </div>
+{showPopup && (
+<div className="delete-popup-baground">
+        <div className="delete-popup-container">
+            <h3 className="dmesage">
+                Do you want to delete
+            </h3>
 
+            <button className="yes" onClick={() => handledelete(deleteId)}>yes</button>
+
+            <br />
+            <button className="no" onClick={() => setShowPopup(false)}>no</button>
+        </div>
+    </div>
+    
+)}
+            </div >
         </>
 
     );
