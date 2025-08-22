@@ -1,189 +1,181 @@
-/* .stafflistdetitpopupbox {
-  width: 100%;
+/* StaffMaping.css */
+
+/* Main container */
+.stafflistdetitpopupbox {
   padding: 20px;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  background-color: #f4f7fb;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* New staff button container */
 .nbutton {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 15px;
 }
 
+/* New staff button */
 .newstaff {
-  padding: 6px 14px;
-  background-color: #007bff;
+  padding: 10px 20px;
+  background-color: #4a90e2;
   color: white;
+  font-weight: 600;
   border: none;
-  font-size: 14px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s;
 }
-
 .newstaff:hover {
-  background-color: #0056b3;
+  background-color: #357abd;
 }
 
+/* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
+/* Table heading */
 .slheding {
-  background-color: #343a40;
+  background-color: #4a90e2;
   color: white;
+  font-size: 15px;
   text-align: left;
 }
-
 .slheding th {
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 12px;
 }
 
+/* Table body */
 .slbodycontent td {
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 14px;
+  color: #333;
 }
-
 .slbodycontent:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #f9fbff;
 }
-
 .slbodycontent:hover {
-  background-color: #f1f1f1;
+  background-color: #eef4ff;
+  transition: 0.3s ease;
 }
 
+/* Action buttons */
 .action-buttons {
   display: flex;
   gap: 8px;
 }
-
 .delete-btn,
 .edit-btn {
-  padding: 5px 10px;
+  padding: 6px 12px;
   font-size: 13px;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.delete-btn {
-  background-color: #dc3545;
-  color: white;
-}
-
-.delete-btn:hover {
-  background-color: #c82333;
-}
-
-.edit-btn {
-  background-color: #28a745;
-  color: white;
-}
-
-.edit-btn:hover {
-  background-color: #218838;
-}
-.nbutton {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 15px;
-}
-
-.newstaff {
-  padding: 6px 14px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.newstaff:hover {
-  background-color: #0056b3;
-}
- */
-
- /* Dark transparent background */
-.delete-popup-baground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* slightly darker */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Popup container */
-.delete-popup-container {
-  background: #ffffff;
-  padding: 25px 30px;
-  border-radius: 12px;
-  width: 350px;
-  max-width: 90%;
-  text-align: center;
-  box-shadow: 0px 6px 15px rgba(0,0,0,0.3);
-  animation: scaleIn 0.3s ease-in-out;
-}
-
-/* Popup message */
-.dmesage {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: 500;
-}
-
-/* Buttons wrapper */
-.delete-popup-container button {
-  padding: 10px 20px;
-  margin: 0 8px;
-  border: none;
   border-radius: 6px;
-  font-size: 15px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s;
 }
-
-/* Yes button */
-.delete-popup-container .yes {
+.delete-btn {
   background-color: #e74c3c;
   color: white;
 }
-
-.delete-popup-container .yes:hover {
+.delete-btn:hover {
   background-color: #c0392b;
 }
-
-/* No button */
-.delete-popup-container .no {
-  background-color: #95a5a6;
+.edit-btn {
+  background-color: #27ae60;
   color: white;
 }
-
-.delete-popup-container .no:hover {
-  background-color: #7f8c8d;
+.edit-btn:hover {
+  background-color: #1e8449;
 }
 
-/* Fade animation */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Delete popup background */
+.delete-popup-baground,
+.addpopup-baground {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
 }
 
-/* Scale popup animation */
-@keyframes scaleIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+/* Delete popup container */
+.delete-popup-container {
+  background: #fff;
+  padding: 25px 35px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+.dmesage {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #444;
+}
+.yes,
+.no {
+  padding: 8px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.yes {
+  background: #27ae60;
+  color: #fff;
+}
+.yes:hover {
+  background: #1e8449;
+}
+.no {
+  background: #e74c3c;
+  color: #fff;
+}
+.no:hover {
+  background: #c0392b;
 }
 
+/* Add New Staff Form */
+.nsbg {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+.ns1 {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+.ns1:focus {
+  border: 1px solid #4a90e2;
+  outline: none;
+}
+.nssubmit {
+  padding: 10px;
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.nssubmit:hover {
+  background-color: #357abd;
+}

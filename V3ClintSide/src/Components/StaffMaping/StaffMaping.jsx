@@ -9,6 +9,10 @@ function StaffMaping() {
     const [allstaffDetils, setAllStaffDetiles] = useState([]);
     const [showPopup,setShowPopup] = useState(false);
     const [deleteId,setDeleteId] = useState(null);
+    const [newstaff, setNewStaff] = useState([]);
+    const [showFoorm,setShowFoorm] = useState(false);
+    const [showEdit,setShowEdit]= useState(false);
+    const [editStaff,setEditStaff]= useState([]);
 
     useEffect(() => {
 
@@ -62,11 +66,45 @@ function StaffMaping() {
 
     // }
 
+    const handleNewStaff = async (event) => {
+        event.preventDefault();// e.preventDefault();
+        try {
+            console.log(newstaff);
+            const res = await axios.post("http://localhost:5000/Admin/addnewstaff", newstaff)
+            if (res.data.success) {
+                alert("add success");
+                setShowFoorm(false);
+            }
+            else {
+                alert("canot add ");
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    const handleInput = (event) => {
+        const { name, value } = event.target;
+        setNewStaff((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handlepopup= async()=>{
+        try {
+            setShowFoorm(true);
+            //setShowPopup(true);
+        }
+        catch (err) {
+            console.error("deleting error:", err);
+        }
+    }
+
+
     return (
 
         <>
             <div className="stafflistdetitpopupbox">
-                <div className="nbutton">  <button className="newstaff">new staff</button> </div>
+                <div className="nbutton">  <button className="newstaff" onClick={()=>{handlepopup()}}>new staff</button> </div>
 
                 <table >
                     <thead >
@@ -106,6 +144,7 @@ function StaffMaping() {
                     ))}
                     </tbody>
                 </table>
+
 {showPopup && (
 <div className="delete-popup-baground">
         <div className="delete-popup-container">
@@ -121,6 +160,58 @@ function StaffMaping() {
     </div>
     
 )}
+
+    {showFoorm && (
+
+        <div className="addpopup-baground">
+            
+             <form onSubmit={handleNewStaff} className="nsbg">
+                        <input className="ns1" placeholder="staffname" name="staff_name" onChange={handleInput} required />
+              
+                        <input className="ns1" placeholder="staffid" name="staff_id" onChange={handleInput} required />
+                    
+                        <input className="ns1" placeholder="staffcategory" name="staff_category" onChange={handleInput} required />
+                    
+                        <input className="ns1" placeholder="staffdepartment" name="staff_dept" onChange={handleInput} required />
+                    
+                        <input className="ns1" placeholder="deartment catagry" name="dept_catagry" onChange={handleInput} required />
+                  
+                        <input className="ns1" placeholder="role" name="Role" onChange={handleInput} required />
+                   
+                        <input className="ns1" placeholder="password" name="staff_pass" onChange={handleInput} required />
+                    
+                    <button className="nssubmit" type="submit" > submit </button>
+                
+            </form>
+        </div>
+    )}
+
+
+    {showEdit &&(
+        <div>
+            <form onSubmit={handleNewStaff}>
+                 <input className="ns1" placeholder="staffname" name="staff_name" value={alldetiles.staff_name} onChange={handleInput} required />
+              
+                        <input className="ns1" placeholder="staffid" name="staff_id" value={alldetiles.staff_category} onChange={handleInput} required />
+                    
+                        <input className="ns1" placeholder="staffcategory" name="staff_category" value={alldetiles.staff_category} onChange={handleInput} required />
+                    
+                        <input className="ns1" placeholder="staffdepartment" name="staff_dept" value={alldetiles.staff_dept} onChange={handleInput} required />
+                    
+                        <input className="ns1" placeholder="deartment catagry" name="dept_catagry" value={alldetiles.dept_catagry} onChange={handleInput} required />
+                  
+                        <input className="ns1" placeholder="role" name="Role" value={alldetiles.Role} onChange={handleInput} required />
+                   
+                        <input className="ns1" placeholder="password" name="staff_pass" value={alldetiles.staff_pass} onChange={handleInput} required />
+                    
+                    <button className="nssubmit" type="submit" > submit </button>
+
+
+            </form>
+        </div>
+
+    )}
+
             </div >
         </>
 
