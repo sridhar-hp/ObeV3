@@ -76,6 +76,44 @@ app.delete('/Admin/staffdelet/:id', async (req, res) => {
     }
 
 });
+//edit staff detiles =======================================================================================================================================
+
+app.put('/Admin/editStaff/:id',async(req,res)=>{
+    const { staff_id,
+            staff_pass,
+            staff_name,
+            staff_category,
+            staff_dept,
+            dept_catagry,
+            Role } = req.body;
+    console.log("Incoming data:", req.body);
+
+
+    if (!staff_id|| !staff_pass||!staff_name||!staff_category||!staff_dept||!dept_catagry||!Role) {
+        return res.status(400).json({ success: false, message: "all input required" });
+    }
+
+    try {
+        
+
+        const edits = await CourseMaping.put({
+            staff_id,
+            staff_pass,
+            staff_name,
+            staff_category,
+            staff_dept,
+            dept_catagry,
+            Role,
+        });
+        res.status(201).json({ success: true, message: "staff create succesfully" });
+    }
+
+    catch (err) {
+        console.error("New Staff Error:", err.message);
+        res.status(500).json({ success: false, message: "failed" });
+    }
+
+})
 
 // adding new staff ======================================================================================================================================
 
