@@ -1,15 +1,18 @@
 import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
-import { NavLink,Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import './CourseMap.css';
 
 function CourseMap() {
 
-    const [allCourseDetils,setAllCourseDetiles] = useState([]);
+    const [allCourseDetils, setAllCourseDetiles] = useState([]);
+    const [deletC,setDeleteC]=useState(null);
+    const [deletPopup, setDeletPopup] = useState(false);
+
 
     useEffect(() => {
-        
+
         const allCourseDetiles = async () => {
             try {
                 const res = await axios.get("http://localhost:5000/Admin/courselist")
@@ -36,12 +39,35 @@ function CourseMap() {
     //     catch (err) {
     //         console.error("deleting error:", err);
     //     }
-   // };
+    // };
+
+    const handleDeletclick = async(staff_id)=>
+    {
+        setDeleteC(staff_id);
+        setDeletPopup(true);
+    }
+
+    const handleDelet=async(deleteC)=>
+    { 
+        try{
+        await axios.delete(`http://localhost:5000/Admin/coursedelet/${deleteC}`)
+        setAllCourseDetiles((prev)=>prev.filter((items)=>items.staff_id!==deletC));
+        alert("course delete successfull");
+        setDeletPopup(false);
+        setDeleteC(null);
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+
+
+    }
     return (
 
         <>
             <div className="courselistdetitpopupbox">
-                <NavLink to="AddNewCourse"><button className="newcourse">new course</button></NavLink>
+              <button className="newcourse">new course</button>
                 <table >
                     <thead >
                         <tr className="cheding">
@@ -77,17 +103,30 @@ function CourseMap() {
                             <td>{allcdetiles.section}</td>
                             <td>{allcdetiles.course_title}</td>
                             <td>{allcdetiles.academic_sem}</td>
-                            <td><button onClick={() => { handleDelet(allcdetiles.staff_id) }}>delete</button> <button>edit</button></td>
+                            <td><button onClick={() => { handleDeletclick(allcdetiles.staff_id) }}>delete</button>
+                                <button>edit</button></td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
             </div>
-            <div>
-                <div>
-                    <Outlet />
+            {deletPopup && (
+
+                <div className="delete-popup-baground">
+                    <div className="delete-popup-container">
+                        <h3 className="dmesage">
+                            Do you want to delete
+                        </h3>
+                        <button onClick={()=>handleDelet(deletC)}>yes</button>
+                        <button onClick={()=>setDeletPopup(false)}>no</button>
+
+                    </div>
                 </div>
-            </div>
+            )}
+            {/* <div>
+                    <Outlet />
+                </div> */}
+
         </>
 
     );

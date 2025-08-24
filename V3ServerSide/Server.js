@@ -61,7 +61,29 @@ app.delete('/Admin/staffdelet/:id', async (req, res) => {
     try {
         // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
       //  const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
-        const deletecourse = await CourseMaping.destroy({ where: { staff_id } });
+        const deletestaff = await CourseMaping.destroy({ where: { staff_id } });
+
+        if (deletestaff) {
+            res.status(200).json({ success: true, message: "deletsucces" });
+        }
+        else {
+            res.status(500).json({ success: false, message: "canot delete" });
+        }
+
+    }
+    catch (err) {
+        console.error(err);
+    }
+
+});
+//====================================================================================================================================================
+
+app.delete('/Admin/coursedelet/:id', async (req, res) => {
+    const staff_id = req.params.id;
+    try {
+        // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
+      //  const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
+        const deletecourse = await StaffMaster.destroy({ where: { staff_id } });
 
         if (deletecourse) {
             res.status(200).json({ success: true, message: "deletsucces" });
@@ -94,9 +116,9 @@ app.put('/Admin/editStaff/:id',async(req,res)=>{
     }
 
     try {
-        
+         const staffId = req.params.id;
 
-        const edits = await CourseMaping.put({
+        const [update] = await CourseMaping.update({
             staff_id,
             staff_pass,
             staff_name,
@@ -104,8 +126,15 @@ app.put('/Admin/editStaff/:id',async(req,res)=>{
             staff_dept,
             dept_catagry,
             Role,
-        });
+        },
+            {where:{staff_id:staffId}});
+
+            if(update){
         res.status(201).json({ success: true, message: "staff create succesfully" });
+            }
+            else{
+                res.status(404).json({success:false,message:"server side errorr"});
+                }
     }
 
     catch (err) {
