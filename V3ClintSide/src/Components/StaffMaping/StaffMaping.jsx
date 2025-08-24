@@ -150,7 +150,7 @@ function StaffMaping() {
                             <th>STAFF DEPARTMENT</th>
                             <th>DEPARTMENT CATOGRY</th>
                             <th>STAFF ROLE IN COLLAGE</th>
-                            <th>EDIT</th>
+                            <th className="a">EDIT</th>
                         </tr>
                     </thead>
 
@@ -207,7 +207,7 @@ function StaffMaping() {
 
                             <input className="ns1" placeholder="password" name="staff_pass" onChange={handleInput} required />
 
-                            <button className="nssubmit" type="submit" > submit </button>
+                            <button className="nssubmit" type="submit" > add new staff  </button> <button className="nssubmit"onClick={()=> setShowFoorm(false)}>back</button>
 
                         </form>
                     </div>
@@ -215,8 +215,8 @@ function StaffMaping() {
 
 
                 {showEdit && (
-                    <div>
-                        <form onSubmit={handleSupmit}>
+                    <div className="addpopup-baground">
+                        <form onSubmit={handleSupmit} className="nsbg">
                             <input className="ns1" placeholder="staffname" name="staff_name" value={editStaff.staff_name || ""} onChange={handleEditInput} required />
 
                             <input className="ns1" placeholder="staffid" name="staff_id" value={editStaff.staff_id || ""} onChange={handleEditInput} required />
@@ -231,7 +231,7 @@ function StaffMaping() {
 
                             <input className="ns1" placeholder="password" name="staff_pass" value={editStaff.staff_pass || ""} onChange={handleEditInput} required />
 
-                            <button className="nssubmit" type="submit" > submit </button>
+                            <button className="nssubmit" type="submit" > save </button> <button className="nssubmit"onClick={()=>{setShowEdit(false)}}> back</button>
                         </form>
                     </div>
                 )}

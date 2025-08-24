@@ -1,7 +1,5 @@
 import axios from "axios";
-import React from "react";
 import { useEffect, useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
 import './CourseMap.css';
 
 function CourseMap() {
@@ -13,10 +11,10 @@ function CourseMap() {
     const [showFoorm, setShowFoorm] = useState(false);
     const [newCourse, setNewcourse] = useState([])
 
-    const [showEdit,setShowEdit]=useState(false);
-    const [courseEdit,setCourseEdit]=useState();
+    const [showEdit, setShowEdit] = useState(false);
+    const [courseEdit, setCourseEdit] = useState();
     const [editStaffId, setEditStaffId] = useState(null);
-    
+
 
     useEffect(() => {
 
@@ -80,19 +78,19 @@ function CourseMap() {
 
     //================================================================================================================================================================
 
-     const handleEditclick = async (staff) => {
+    const handleEditclick = async (staff) => {
         setEditStaffId(staff.staff_id);
         setCourseEdit(staff);
         setShowEdit(true);
     }
 
-    const handleEditInput = async(event)=>{
+    const handleEditInput = async (event) => {
         const { name, value } = event.target;
         setCourseEdit((prev) => ({ ...prev, [name]: value }));
 
     }
 
-    const handleESupmit = async(event)=>{
+    const handleESupmit = async (event) => {
         event.preventDefault();
         try {
             console.log();
@@ -112,7 +110,9 @@ function CourseMap() {
 
         <>
             <div className="courselistdetitpopupbox">
-                <button className="newcourse" onClick={() => handlepopup()}>new course</button>
+                <div className="cbutton">
+                    <button className="newcourse" onClick={handlepopup}>New Course</button>
+                </div>
                 <table >
                     <thead >
                         <tr className="cheding">
@@ -121,8 +121,8 @@ function CourseMap() {
                             <th>STAFF ID</th>
                             <th>CATEGORY</th>
                             <th>BATCH</th>
-                            <th>DEPARTMENT NAME</th>
-                            <th>DEPARTMENT ID</th>
+                            <th>DEPT NAME</th>
+                            <th>DEPT ID</th>
                             <th>COURSE CODE</th>
                             <th>DEGREE</th>
                             <th>SEMESTER</th>
@@ -152,7 +152,7 @@ function CourseMap() {
                             <td>{allcdetiles.course_title}</td>
                             <td>{allcdetiles.academic_sem}</td>
                             <td><button onClick={() => { handleDeletclick(allcdetiles.staff_id) }}>delete</button>
-                                <button onClick={()=>{handleEditclick(allcdetiles)}}>edit</button></td>
+                                <button onClick={() => { handleEditclick(allcdetiles) }}>edit</button></td>
                         </tr>
                     ))}
                     </tbody>
@@ -173,7 +173,7 @@ function CourseMap() {
             )}
 
             {showFoorm && (
-                <div>
+                <div className="newcourseaddform">
                     <form onSubmit={handleNewform} className="ncbg">
                         <input className="enc1" placeholder="staffname" name="staff_name" onChange={handleCourseInput} required />
 
@@ -199,7 +199,7 @@ function CourseMap() {
 
                         <input className="enc1" placeholder="acadamicsemster" name="academic_sem" onChange={handleCourseInput} required />
 
-                        <button className="ncsubmit" type="submit" > submit </button>
+                        <button className="ncsubmit" type="submit" > submit </button> <button className="ncsubmit" onClick={()=>{setShowFoorm(false)}}> back </button>
 
                     </form>
                 </div>
@@ -207,14 +207,12 @@ function CourseMap() {
 
             }
 
-
-
-              {showEdit && (
-                <div>
+            {showEdit && (
+                <div className="cedit">
                     <form onSubmit={handleESupmit} className="ncbg">
                         <input className="enc1" placeholder="staffname" name="staff_name" value={courseEdit.staff_name || ""} onChange={handleEditInput} required />
 
-                        <input className="enc1" placeholder="staffid" name="staff_id" value={courseEdit.staff_id || ""}onChange={handleEditInput} required />
+                        <input className="enc1" placeholder="staffid" name="staff_id" value={courseEdit.staff_id || ""} onChange={handleEditInput} required />
 
                         <input className="enc1" placeholder="category" name="category" value={courseEdit.category || ""} onChange={handleEditInput} required />
 
@@ -226,17 +224,17 @@ function CourseMap() {
 
                         <input className="enc1" placeholder="course code" name="course_code" value={courseEdit.course_code || ""} onChange={handleEditInput} required />
 
-                        <input className="enc1" placeholder="degree" name="degree"value={courseEdit.degree || ""} onChange={handleEditInput} required />
+                        <input className="enc1" placeholder="degree" name="degree" value={courseEdit.degree || ""} onChange={handleEditInput} required />
 
-                        <input className="enc1" placeholder="semester" name="semester" value={courseEdit.semester || ""}onChange={handleEditInput} required />
+                        <input className="enc1" placeholder="semester" name="semester" value={courseEdit.semester || ""} onChange={handleEditInput} required />
 
-                        <input className="enc1" placeholder="section" name="section" value={courseEdit.section || ""}onChange={handleEditInput} required />
+                        <input className="enc1" placeholder="section" name="section" value={courseEdit.section || ""} onChange={handleEditInput} required />
 
-                        <input className="enc1" placeholder="course title" name="course_title"value={courseEdit.course_title || ""} onChange={handleEditInput} required />
+                        <input className="enc1" placeholder="course title" name="course_title" value={courseEdit.course_title || ""} onChange={handleEditInput} required />
 
                         <input className="enc1" placeholder="acadamicsemster" name="academic_sem" value={courseEdit.academic_sem || ""} onChange={handleEditInput} required />
 
-                        <button className="ncsubmit" type="submit" > submit </button>
+                        <button className="ncsubmit" type="submit" > submit </button><button className="ncsubmit" onClick={()=>{setShowEdit(false)}}>back</button>
 
                     </form>
                 </div>

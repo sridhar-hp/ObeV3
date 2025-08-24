@@ -1,83 +1,206 @@
+/* CourseMap.css */
+
+/* Main container */
 .courselistdetitpopupbox {
-  background-color: #f7f9fc;
   padding: 20px;
+  background-color:#f4f7fb;
   border-radius: 10px;
-  margin: 30px auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 98%;
-  overflow-x: auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  position: relative;
+  box-shadow: 0 4px 12px  rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  /* NEW: let it wrap the inner table */
+
 }
 
+/* Top Button */
+.cbutton {
+  text-align: right;
+  margin-bottom: 15px;
+}
 .newcourse {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: #007bff;
-  color: white;
-  padding: 10px 16px;
+  display: inline-block !important;
+  width: auto !important;
+  padding: 6px 14px;
+  background-color: #4a90e2;
+  color: #fff;
   font-size: 14px;
+  font-weight: 500;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background 0.3s;
 }
-
 .newcourse:hover {
-  background-color: #0056b3;
+  background-color: #357abd;
 }
 
+/* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 60px;
-  background-color: white;
+  background: white;
   border-radius: 10px;
   overflow: hidden;
+  margin: 0px; 
+    max-width: 100%;
 }
 
-.cheding th {
-  background-color: #003366;
+/* Table heading */
+.cheding {
+  background-color: #4a90e2;
   color: white;
-  padding: 12px;
+  font-size: 15px;
   text-align: left;
-  font-size: 13px;
-  text-transform: uppercase;
-  border-bottom: 2px solid #ddd;
+}
+.cheding th {
+  padding: 12px;
 }
 
+/* Table body */
 .cbodycontent td {
   padding: 10px 12px;
+  border-bottom: 1px solid #e5e5e5;
   font-size: 14px;
-  border-bottom: 1px solid #e0e0e0;
-  background-color: #fdfdfd;
+  color: #333;
 }
-
+.cbodycontent:nth-child(even) {
+  background-color: #f9fbff;
+}
 .cbodycontent:hover {
-  background-color: #f1f8ff;
+  background-color: #eef4ff;
+  transition: 0.3s ease;
 }
 
-.cbodycontent button {
-  background-color: #28a745;
-  color: white;
+/* Action buttons inside table */
+.caction-buttons {
+  display: flex;
+  gap: 8px;
+}
+.cdelete-btn,
+.cedit-btn {
+  padding: 6px 12px;
+  font-size: 13px;
   border: none;
-  margin: 2px;
-  padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 12px;
-  transition: 0.2s ease-in-out;
+  transition: all 0.3s;
+}
+.cdelete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+.cdelete-btn:hover {
+  background-color: #c0392b;
+}
+.cedit-btn {
+  background-color: #27ae60;
+  color: white;
+}
+.cedit-btn:hover {
+  background-color: #1e8449;
 }
 
-.cbodycontent button:hover {
-  background-color: #1e7e34;
+/* Delete popup background */
+.cdelete-popup-baground {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
 }
 
-.cbodycontent button:nth-child(1) {
-  background-color: #dc3545;
+/* Delete popup container */
+.cdelete-popup-container {
+  background: #fff;
+  padding: 25px 35px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+.cdmesage {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #444;
+}
+.cyes,
+.cno {
+  padding: 8px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.cyes {
+  background: #27ae60;
+  color: #fff;
+}
+.cyes:hover {
+  background: #1e8449;
+}
+.cno {
+  background: #e74c3c;
+  color: #fff;
+}
+.cno:hover {
+  background: #c0392b;
 }
 
-.cbodycontent button:nth-child(1):hover {
-  background-color: #a71d2a;
+/* Add New Course Form */
+.newcourseaddform {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 150;
+}
+.ncbg {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+.enc1 {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+.enc1:focus {
+  border: 1px solid #4a90e2;
+  outline: none;
+}
+.ncsubmit {
+  padding: 10px;
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.ncsubmit:hover {
+  background-color: #357abd;
+}
+
+/* Edit popup */
+.cedit {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
 }
