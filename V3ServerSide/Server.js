@@ -60,7 +60,7 @@ app.delete('/Admin/staffdelet/:id', async (req, res) => {
     const staff_id = req.params.id;
     try {
         // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
-      //  const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
+        //  const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
         const deletestaff = await CourseMaping.destroy({ where: { staff_id } });
 
         if (deletestaff) {
@@ -82,7 +82,7 @@ app.delete('/Admin/coursedelet/:id', async (req, res) => {
     const staff_id = req.params.id;
     try {
         // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
-      //  const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
+        //  const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
         const deletecourse = await StaffMaster.destroy({ where: { staff_id } });
 
         if (deletecourse) {
@@ -101,7 +101,7 @@ app.delete('/Admin/coursedelet/:id', async (req, res) => {
 //course edit =======================================================================================================================================================
 
 app.put('/Admin/editcourse/:id', async (req, res) => {
-    
+
     const { category,
         batch,
         dept_id,
@@ -117,66 +117,65 @@ app.put('/Admin/editcourse/:id', async (req, res) => {
     console.log("Incoming data:", req.body);
 
 
-    if (! category||!batch||!dept_id||!degree||!dept_name||!semester||!section||!course_code||!staff_id||!staff_name||!course_title||!academic_sem) {
+    if (!category || !batch || !dept_id || !degree || !dept_name || !semester || !section || !course_code || !staff_id || !staff_name || !course_title || !academic_sem) {
         return res.status(400).json({ success: false, message: "all input required" });
     }
 
     try {
         const staffId = req.params.id;
         const [cupdate] = await StaffMaster.update({
-        category,
-        batch,
-        dept_id,
-        degree,
-        dept_name,
-        semester,
-        section,
-        course_code,
-        staff_id,
-        staff_name,
-        course_title,
-        academic_sem 
+            category,
+            batch,
+            dept_id,
+            degree,
+            dept_name,
+            semester,
+            section,
+            course_code,
+            staff_id,
+            staff_name,
+            course_title,
+            academic_sem
         },
-        {
-            where:{staff_id:staffId}
-        });
-        
-        
-    if(cupdate)
-    {
-        res.status(201).json({ success: true, message: "course create succesfully" });
-    }
-    else{
-        res.status(201).json({ success: false, message: "course canot edit" });
-
-    }
-    }
+            {
+                where: { staff_id: staffId }
+            });
 
 
-    catch(err) {
+        if (cupdate) {
+            res.status(201).json({ success: true, message: "course create succesfully" });
+        }
+        else {
+            res.status(201).json({ success: false, message: "course canot edit" });
+
+        }
+    }
+
+
+    catch (err) {
         console.error("New Staff Error:", err.message);
         res.status(500).json({ success: false, message: "failed" });
     }
 });
 //edit staff detiles =======================================================================================================================================
 
-app.put('/Admin/editStaff/:id',async(req,res)=>{
+app.put('/Admin/editStaff/:id', async (req, res) => {
     const { staff_id,
-            staff_pass,
-            staff_name,
-            staff_category,
-            staff_dept,
-            dept_catagry,
-            Role } = req.body;
+        staff_pass,
+        staff_name,
+        staff_category,
+        staff_dept,
+        dept_catagry,
+        Role } = req.body;
     console.log("Incoming data:", req.body);
 
 
-    if (!staff_id|| !staff_pass||!staff_name||!staff_category||!staff_dept||!dept_catagry||!Role) {
+    if (!staff_id || !staff_pass || !staff_name || !staff_category || !staff_dept || !dept_catagry || !Role) {
         return res.status(400).json({ success: false, message: "all input required" });
     }
 
     try {
-         const staffId = req.params.id;
+        const staffId = req.params.id;
 
         const [update] = await CourseMaping.update({
             staff_id,
@@ -187,14 +186,14 @@ app.put('/Admin/editStaff/:id',async(req,res)=>{
             dept_catagry,
             Role,
         },
-            {where:{staff_id:staffId}});
+            { where: { staff_id: staffId } });
 
-            if(update){
-        res.status(201).json({ success: true, message: "staff create succesfully" });
-            }
-            else{
-                res.status(404).json({success:false,message:"server side errorr"});
-                }
+        if (update) {
+            res.status(201).json({ success: true, message: "staff create succesfully" });
+        }
+        else {
+            res.status(404).json({ success: false, message: "server side errorr" });
+        }
     }
 
     catch (err) {
@@ -209,21 +208,21 @@ app.put('/Admin/editStaff/:id',async(req,res)=>{
 
 app.post('/Admin/addnewstaff', async (req, res) => {
     const { staff_id,
-            staff_pass,
-            staff_name,
-            staff_category,
-            staff_dept,
-            dept_catagry,
-            Role } = req.body;
+        staff_pass,
+        staff_name,
+        staff_category,
+        staff_dept,
+        dept_catagry,
+        Role } = req.body;
     console.log("Incoming data:", req.body);
 
 
-    if (!staff_id|| !staff_pass||!staff_name||!staff_category||!staff_dept||!dept_catagry||!Role) {
+    if (!staff_id || !staff_pass || !staff_name || !staff_category || !staff_dept || !dept_catagry || !Role) {
         return res.status(400).json({ success: false, message: "all input required" });
     }
 
     try {
-        
+
 
         const adds = await CourseMaping.create({
             staff_id,
@@ -262,26 +261,26 @@ app.post('/Admin/ncourse', async (req, res) => {
     console.log("Incoming data:", req.body);
 
 
-    if (! category||!batch||!dept_id||!degree||!dept_name||!semester||!section||!course_code||!staff_id||!staff_name||!course_title||!academic_sem) {
+    if (!category || !batch || !dept_id || !degree || !dept_name || !semester || !section || !course_code || !staff_id || !staff_name || !course_title || !academic_sem) {
         return res.status(400).json({ success: false, message: "all input required" });
     }
 
     try {
         const addc = await StaffMaster.create({
-        category,
-        batch,
-        dept_id,
-        degree,
-        dept_name,
-        semester,
-        section,
-        course_code,
-        staff_id,
-        staff_name,
-        course_title,
-        academic_sem 
-    });
-        
+            category,
+            batch,
+            dept_id,
+            degree,
+            dept_name,
+            semester,
+            section,
+            course_code,
+            staff_id,
+            staff_name,
+            course_title,
+            academic_sem
+        });
+
         res.status(201).json({ success: true, message: "staff create succesfully" });
     }
 
