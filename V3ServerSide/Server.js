@@ -98,6 +98,66 @@ app.delete('/Admin/coursedelet/:id', async (req, res) => {
     }
 
 });
+//course edit =======================================================================================================================================================
+
+app.put('/Admin/editcourse/:id', async (req, res) => {
+    
+    const { category,
+        batch,
+        dept_id,
+        degree,
+        dept_name,
+        semester,
+        section,
+        course_code,
+        staff_id,
+        staff_name,
+        course_title,
+        academic_sem } = req.body;
+    console.log("Incoming data:", req.body);
+
+
+    if (! category||!batch||!dept_id||!degree||!dept_name||!semester||!section||!course_code||!staff_id||!staff_name||!course_title||!academic_sem) {
+        return res.status(400).json({ success: false, message: "all input required" });
+    }
+
+    try {
+        const staffId = req.params.id;
+        const [cupdate] = await StaffMaster.update({
+        category,
+        batch,
+        dept_id,
+        degree,
+        dept_name,
+        semester,
+        section,
+        course_code,
+        staff_id,
+        staff_name,
+        course_title,
+        academic_sem 
+        },
+        {
+            where:{staff_id:staffId}
+        });
+        
+        
+    if(cupdate)
+    {
+        res.status(201).json({ success: true, message: "course create succesfully" });
+    }
+    else{
+        res.status(201).json({ success: false, message: "course canot edit" });
+
+    }
+    }
+
+
+    catch(err) {
+        console.error("New Staff Error:", err.message);
+        res.status(500).json({ success: false, message: "failed" });
+    }
+});
 //edit staff detiles =======================================================================================================================================
 
 app.put('/Admin/editStaff/:id',async(req,res)=>{
