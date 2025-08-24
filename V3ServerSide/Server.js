@@ -186,7 +186,7 @@ app.post('/Admin/addnewstaff', async (req, res) => {
 // adding new course======================================================================================================================================
 
 
-app.post('/Admin/addnewcourse', async (req, res) => {
+app.post('/Admin/ncourse', async (req, res) => {
     const { category,
         batch,
         dept_id,
