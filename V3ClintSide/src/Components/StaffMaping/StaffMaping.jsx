@@ -58,12 +58,6 @@ function StaffMaping() {
             console.error(err);
         }
     }
-
-    // const cancled = () =>{
-    //      setDeleteId(null);
-    //         setShowPopup(false);
-
-    // }
     //===============================================================================================================================================
 
     const handleNewStaff = async (event) => {
@@ -92,7 +86,6 @@ function StaffMaping() {
     const handlepopup = async () => {
         try {
             setShowFoorm(true);
-            //setShowPopup(true);
         }
         catch (err) {
             console.error("deleting error:", err);

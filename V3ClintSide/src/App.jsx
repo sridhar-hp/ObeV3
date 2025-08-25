@@ -34,11 +34,8 @@ function App() {
 
                     <Route path="ModifingPage" element={<ModifingPage />}>
                         <Route path="StaffMaping" element={<StaffMaping />}/>
-                            {/* <Route path="AddNewStaff" element={<AddNewStaff />} />
-                        </Route> */}
-                        <Route path="CourseMap" element={<CourseMap />}>
-                            <Route path="AddNewcourse" element={<AddNewCourse />} />
-                        </Route>
+                        <Route path="CourseMap" element={<CourseMap />}/>
+                            
                     </Route>
                 </Route>
             </Routes>

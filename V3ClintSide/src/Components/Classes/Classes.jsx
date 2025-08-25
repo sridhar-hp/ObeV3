@@ -35,6 +35,12 @@ function Classes() {
                     {cours.course_title}
                     <br />
                     {cours.academic_sem}
+                    <br />
+                    {cours.degree}
+                    <br />
+                    {cours.section}
+                    <br />
+                    {cours.course_code}
 
                 </div>
             ))}

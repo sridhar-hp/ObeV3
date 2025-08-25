@@ -12,7 +12,7 @@
     border-radius: 12px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     padding: 6px 14px; /* Minimized padding for less height */
-    min-height: 70px;  /* Slightly increased box height */
+    min-height: 150px;  /* Slightly increased box height */
     max-height: 70px;  /* Height is fixed and equal */
     min-width: 70px;   /* Width equal to height */
     max-width: 70px;   /* Width equal to height */
