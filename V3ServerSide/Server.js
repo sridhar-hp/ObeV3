@@ -39,7 +39,7 @@ app.post('/login', async (req, res) => {
 
 });
 
-// ================================================================================================================
+// class ================================================================================================================
 
 app.get('/staff/:id/classes', async (req, res) => {
     const staffId = req.params.id;
@@ -81,8 +81,6 @@ app.delete('/Admin/staffdelet/:id', async (req, res) => {
 app.delete('/Admin/coursedelet/:id', async (req, res) => {
     const staff_id = req.params.id;
     try {
-        // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
-        //  const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
         const deletecourse = await StaffMaster.destroy({ where: { staff_id } });
 
         if (deletecourse) {
