@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import MarkEntry from "../MarkEntry/MarkEntry";
 import './Classes.css';
 
 function Classes() {
@@ -26,10 +27,11 @@ function Classes() {
     }, []);
 
     return (
+        <>
         <div className="continar" >
 
             {courses.map((cours, index) => (
-                <div className="course box" key={index}>
+               <Link to="/LayoutPage/jmc001/MarkEntry" className="course box" key={index}>
                     {cours.staff_name}
                     <br />
                     {cours.course_title}
@@ -42,10 +44,10 @@ function Classes() {
                     <br />
                     {cours.course_code}
 
-                </div>
+                </Link>
             ))}
         </div>
-
+</>
     );
 }
 
