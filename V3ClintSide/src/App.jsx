@@ -29,6 +29,8 @@ function App() {
                     <Route path="MarkEntry" element={<MarkEntry />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Route>
+                    <Route path="MarkEntry" element={<MarkEntry />} />
+
                 <Route path="/AdminPage/:id" element={<AdminPage />} >
                     <Route index element={<HomePage />} />
                     <Route path="HomePage" element={<HomePage />} />

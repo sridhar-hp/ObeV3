@@ -31,7 +31,7 @@ function Classes() {
         <div className="continar" >
 
             {courses.map((cours, index) => (
-               <Link to="/LayoutPage/jmc001/MarkEntry" className="course box" key={index}>
+               <Link to="/MarkEntry "className="course box" key={index}>
                     {cours.staff_name}
                     <br />
                     {cours.course_title}

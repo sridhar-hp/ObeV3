@@ -1,0 +1,40 @@
+
+.mecontiner {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+   
+   
+
+}
+.dummy{
+    display: flex;
+    
+    align-items: center;
+}
+
+/* .tme {
+  background-color: #4a90e2;
+  color: white;
+  font-size: 15px;
+  text-align: left;
+  flex-wrap: wrap;
+}
+.tme th {
+  padding: 12px;
+}
+
+.bme td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 14px;
+  color: #333;
+}
+.bme:nth-child(even) {
+  background-color: #f9fbff;
+}
+.bme:hover {
+  background-color: #eef4ff;
+  transition: 0.3s ease;
+} */
