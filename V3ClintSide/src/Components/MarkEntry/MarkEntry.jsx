@@ -1,8 +1,26 @@
 import React from "react";
+import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import './MarkEntry.css';
+import axios from "axios";
 
 function MarkEntry() {
+
+    const [markEntry,setMarkEntry]=useState();
+    const [detils,setDetiles]=useState([]);
+    const location = useLocation();
+    const state=location.state;
+console.log("state===>",state);
+setMarkEntry(state);
+    useEffect(()=>{
+        const displaymark=async(markEntry)=> {
+            const res =  await axios.get("http://localhost:5000/mark",markEntry)
+            setDetiles(res.data);
+        }
+        displaymark();
+    },[])
+
     return (
         <>
             <h1 className="dummy">this is mark entry page</h1>
@@ -25,7 +43,7 @@ function MarkEntry() {
 
                     <tbody>
                         <tr className="bme">
-                            <td>123123</td>
+                            <td>123456</td>
                             <td>bca</td>
                             <td>e</td>
                             <td>lot mark</td>

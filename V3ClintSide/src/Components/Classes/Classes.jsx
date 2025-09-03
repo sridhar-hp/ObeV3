@@ -9,6 +9,7 @@ function Classes() {
     const [courses, setCourses] = useState([]);//map na [] eathu podanum
     const { id } = useParams();
     console.log("id from params", id);
+   
 
     useEffect(() => {
 
@@ -31,7 +32,14 @@ function Classes() {
         <div className="continar" >
 
             {courses.map((cours, index) => (
-               <Link to="/MarkEntry "className="course box" key={index}>
+               <Link to="/MarkEntry "className="course box" key={index}//section,class,year,sf or aided
+               state={{
+                sec:cours.section,
+                class:cours.degree,
+                dept_type:cours.dept_id,
+                sem:cours.academic_sem
+                }}>
+                
                     {cours.staff_name}
                     <br />
                     {cours.course_title}
@@ -46,6 +54,7 @@ function Classes() {
 
                 </Link>
             ))}
+            
         </div>
 </>
     );
