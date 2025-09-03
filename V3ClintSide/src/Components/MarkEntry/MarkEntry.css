@@ -1,40 +1,35 @@
-
-.mecontiner {
+ .mecontiner {
   width: 80%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-   
-   
-
-}
-.dummy{
-    display: flex;
-    
-    align-items: center;
+  justify-content: center;   /* center horizontally */
+  align-items: center;       /* center vertically (if parent has height) */
+  flex-direction: column;    /* so button stays below table */
+    padding-left: 100px;
 }
 
-/* .tme {
-  background-color: #4a90e2;
-  color: white;
-  font-size: 15px;
-  text-align: left;
-  flex-wrap: wrap;
+.mebox {
+  border-collapse: collapse;
+  margin: 20px 0;            /* space above/below */
+  width: 90%;               /* shrink to fit content */
+
 }
-.tme th {
-  padding: 12px;
+.mebox th, 
+.mebox td {
+  border: 2px solid black;    /* table cell borders */
+  padding: 10px;              /* space inside cells */
+  text-align: center;
+
+}
+.me{
+  width: 90%;
+}
+.mebox th{
+  background-color: aqua;
 }
 
-.bme td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #e5e5e5;
-  font-size: 14px;
-  color: #333;
+.meback{
+  color: aliceblue;
+  background-color: blue;
+  display:inline flex;
+  
 }
-.bme:nth-child(even) {
-  background-color: #f9fbff;
-}
-.bme:hover {
-  background-color: #eef4ff;
-  transition: 0.3s ease;
-} */
