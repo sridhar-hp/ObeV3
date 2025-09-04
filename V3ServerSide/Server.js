@@ -5,6 +5,7 @@ const mysql = require('mysql2');
 const { CourseMaping } = require('./TABLE/CourseMaping');
 const { StaffMaster } = require('./TABLE/StaffMaster');
 const { where } = require('sequelize');
+const { MarkEntry}=require('./TABLE/MarkEntry');
 
 //const {staffmaster}= require('./TABLE/StaffMaster');
 
@@ -39,7 +40,7 @@ app.post('/login', async (req, res) => {
 
 });
 
-// class ================================================================================================================
+// class ===========================================================================================================================================
 
 app.get('/staff/:id/classes', async (req, res) => {
     const staffId = req.params.id;
@@ -288,7 +289,7 @@ app.post('/Admin/ncourse', async (req, res) => {
     }
 });
 
-//==========================================================================================================================================
+//=================================================================================================================================================
 //display all staff detiles
 app.get('/Admin/stafflist', async (req, res) => {
     try {
@@ -300,7 +301,7 @@ app.get('/Admin/stafflist', async (req, res) => {
     }
 });
 
-//==========================================================================================================================================
+//==================================================================================================================================================
 //display all course detiles
 app.get('/Admin/courselist', async (req, res) => {
     try {
@@ -312,6 +313,30 @@ app.get('/Admin/courselist', async (req, res) => {
     }
 });
 
+// mark display =====================================================================================================================================
+
+
+app.get("/mark",async (req,res)=>{
+
+    try{
+        const { section,degree,category,semester }=req.query;
+        console.log("check:",section,degree,category,semester);
+        const mark=await MarkEntry.findAll({where:{section:section,class_name:degree,Dept_type:category,Semester:semester}});
+        if(mark)
+        {
+            res.json(mark);
+            // res.status(200).json({success:true,message:"done",mark});
+
+        }
+        else{
+            res.status(401).json({success:false,message:"error in db",mark});
+        }
+    }
+    catch(err)
+    {
+        console.error(err);
+    }
+});
 app.listen(5000, () => {
     console.log("backend run on 5000")
 });
