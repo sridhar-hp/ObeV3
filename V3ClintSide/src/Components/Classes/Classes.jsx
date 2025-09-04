@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import MarkEntry from "../MarkEntry/MarkEntry";
+// import MarkEntry from "../MarkEntry/MarkEntry";
 import './Classes.css';
 
 function Classes() {
@@ -32,12 +32,15 @@ function Classes() {
         <div className="continar" >
 
             {courses.map((cours, index) => (
-               <Link to="/MarkEntry "className="course box" key={index}//section,class,year,sf or aided
-               state={{
-                sec:cours.section,
-                class:cours.degree,
-                dept_type:cours.dept_id,
-                sem:cours.academic_sem
+
+               <Link to="/MarkEntry "className="course box"
+                key={index}                                 
+
+               state={{                              
+                section:cours.section,//
+                degree:cours.degree,//
+                category:cours.category,//
+                semester:cours.semester//
                 }}>
                 
                     {cours.staff_name}
