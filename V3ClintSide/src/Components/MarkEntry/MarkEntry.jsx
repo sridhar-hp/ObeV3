@@ -7,17 +7,16 @@ import axios from "axios";
 
 function MarkEntry() {
 
-    const [markEntry, setMarkEntry] = useState();
+    const [markEntry, setMarkEntry] = useState({});
     const [detils, setDetiles] = useState([]);
 
     const location = useLocation();
     const state = location.state || {};
 
     console.log("state===>", state);
-    // setMarkEntry(state);
     useEffect(() => {
-        // setMarkEntry(state);
-        if (state) {
+  
+        if (state.section && state.degree && state.category && state.semester) {
             const displaymark = async () => {
                 const res = await axios.get("http://localhost:5000/mark", { params: state })//state
                   console.log("Frontend sent params:", state);
@@ -26,8 +25,29 @@ function MarkEntry() {
             }
             displaymark();
         }
-    }, [state]);
+    }, [state.section, state.degree, state.category, state.semester]);
+//==============================================================================================================================
+    const handleentry = async(event)=>{
+        const {name, value}=event.target;
+        setMarkEntry((prev)=>({...prev,[name]:value}));
+        console.log(markEntry);
+    }
 
+    const handlesupmit=async(event)=>
+    {
+        event.preventDefault();
+        try{
+            await axios.put("http://localhost:5000/MarkEntry",{...markEntry,...state})
+            alert("mark entered succesfully");
+
+        }
+        catch(err)
+        {
+            console.error(err,"the mark entred:",markEntry);
+        }
+
+    }
+// ==============================================================================================================================
     return (
         <>
             <h1 className="dummy">this is mark entry page</h1>
@@ -41,11 +61,11 @@ function MarkEntry() {
                             <th>S.NO</th>
                             <th>register no</th>
                             <th>class</th>
-                            <th>section</th>
-                            <th>LOT</th>
-                            <th>MOT</th>
-                            <th>HOT</th>
-                            <th>TOTAL</th>
+                            <th >section</th>
+                            <th className="metbox">LOT</th>
+                            <th className="metbox">MOT</th>
+                            <th className="metbox">HOT</th>
+                            <th className="metbox">TOTAL</th>
                         </tr>
                     </thead>
 
@@ -56,15 +76,16 @@ function MarkEntry() {
                                 <td>{mdet.Register_number}</td>
                                 <td>{mdet.class_name}</td>
                                 <td>{mdet.section}</td>
-                                <td>{mdet.LOT}</td>
-                                <td>{mdet.MOT}</td>
-                                <td>{mdet.HOT}</td>
-                                <td>{mdet.TOTAL}</td>
-                                <td><button className="me">submit</button></td>
+                                <td><input name="LOT" className="meibox" type="number" value={markEntry.LOT || ""} onChange={handleentry}/></td>
+                                <td><input name="MOT" className="meibox" type="number" value={markEntry.MOT || ""} onChange={handleentry}/></td>
+                                <td><input name="HOT" className="meibox" type="number" value={markEntry.HOT || ""} onChange={handleentry}/></td>
+                                <td><input name="TOTAL" className="meibox" type="number" value={markEntry.TOTAL || ""} onChange={handleentry}/></td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+                                <button onClick={handlesupmit} className="me">submit</button>
+
 
             </div>
         </>

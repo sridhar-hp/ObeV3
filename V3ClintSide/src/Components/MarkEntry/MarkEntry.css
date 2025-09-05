@@ -1,35 +1,66 @@
  .mecontiner {
   width: 80%;
   display: flex;
-  justify-content: center;   /* center horizontally */
-  align-items: center;       /* center vertically (if parent has height) */
-  flex-direction: column;    /* so button stays below table */
+   justify-content: center; 
+  align-items: center;     
+  flex-direction: column;    
     padding-left: 100px;
 }
 
 .mebox {
   border-collapse: collapse;
-  margin: 20px 0;            /* space above/below */
+  margin: 10px 0;            /* space above/below */
   width: 90%;               /* shrink to fit content */
-
+  
 }
 .mebox th, 
 .mebox td {
   border: 2px solid black;    /* table cell borders */
   padding: 10px;              /* space inside cells */
   text-align: center;
-
 }
+.mebox td input {
+  width: 60px;
+  height: 25px;
+}
+
+
+
 .me{
-  width: 90%;
+  width: 100%;
 }
 .mebox th{
   background-color: aqua;
 }
+/* Make input boxes usable */
+.mebox td input {
+  padding: 2px 4px;      /* smaller inside space */
+  width: 60px;           /* fixed width */
+  height: 25px;          /* comfortable height */
+  text-align: center;    /* center the numbers */
+  box-sizing: border-box; /* padding won’t break width */
+}
+
 
 .meback{
   color: aliceblue;
   background-color: blue;
   display:inline flex;
+  
+}
+.meibox 
+{
+  padding-left:0px;
+  padding-right:0px;
+}
+.metbox{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+.metbox td input{
+ /* height: 5px; */
+  width: 60px;
   
 }

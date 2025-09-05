@@ -33,7 +33,7 @@ function Classes() {
 
             {courses.map((cours, index) => (
 
-               <Link to="/MarkEntry "className="course box"
+               <Link to="/MarkEntry"className="course box"
                 key={index}                                 
 
                state={{                              
