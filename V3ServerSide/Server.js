@@ -337,6 +337,29 @@ app.get("/mark",async (req,res)=>{
         console.error(err);
     }
 });
+
+    //mark entry
+    app.put("/MarkEntry",async(req,res)=>{
+        const {section,degree,category,semester,LOT,MOT,HOT,TOTAL}=req.body;
+
+        try{
+            const [entry]= await MarkEntry.update({
+                LOT,MOT,HOT,TOTAL},{
+
+                where:{section:section,
+                    class_name:degree,
+                    Dept_type:category,
+                    Semester:semester}
+            })
+
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+
+    
+});
 app.listen(5000, () => {
     console.log("backend run on 5000")
 });
