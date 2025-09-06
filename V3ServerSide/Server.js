@@ -340,21 +340,32 @@ app.get("/mark",async (req,res)=>{
 
     //mark entry
     app.put("/MarkEntry",async(req,res)=>{
-        const {section,degree,category,semester,LOT,MOT,HOT,TOTAL}=req.body;
+        const {students,context}=req.body;
 
         try{
-            const [entry]= await MarkEntry.update({
-                LOT,MOT,HOT,TOTAL},{
-
-                where:{section:section,
-                    class_name:degree,
-                    Dept_type:category,
-                    Semester:semester}
-            })
+            for(const student of students)
+            {
+            await MarkEntry.update({
+                    LOT:student.LOT,
+                    MOT:student.MOT,
+                    HOT:student.HOT,
+                    TOTAL:student.TOTAL},
+                    {where:{
+                        Register_number:student.Register_number,
+                        section:student.section,
+                        class_name:context.degree,
+                        Dept_type:context.category,
+                        Semester:context.semester,
+                    }
+                }
+            );
+            }
+        res.status(200).json({success:true,message:"done"});
 
         }
         catch(err)
         {
+            res.status(500).json({success:false,message:"failed"});
             console.log(err);
         }
 
