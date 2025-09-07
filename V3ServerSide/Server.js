@@ -5,9 +5,7 @@ const mysql = require('mysql2');
 const { CourseMaping } = require('./TABLE/CourseMaping');
 const { StaffMaster } = require('./TABLE/StaffMaster');
 const { where } = require('sequelize');
-const { MarkEntry}=require('./TABLE/MarkEntry');
-
-//const {staffmaster}= require('./TABLE/StaffMaster');
+const { MarkEntry } = require('./TABLE/MarkEntry');
 
 const app = express();
 app.use(cors());
@@ -60,8 +58,6 @@ app.get('/staff/:id/classes', async (req, res) => {
 app.delete('/Admin/staffdelet/:id', async (req, res) => {
     const staff_id = req.params.id;
     try {
-        // const deletstaff = await CourseMaping.destroy({where:{staff_id}});
-        //  const deleteStaff = await StaffMaster.destroy({ where: { staff_id } });
         const deletestaff = await CourseMaping.destroy({ where: { staff_id } });
 
         if (deletestaff) {
@@ -157,7 +153,6 @@ app.put('/Admin/editcourse/:id', async (req, res) => {
     }
 });
 //edit staff detiles =======================================================================================================================================
-
 app.put('/Admin/editStaff/:id', async (req, res) => {
     const { staff_id,
         staff_pass,
@@ -203,8 +198,6 @@ app.put('/Admin/editStaff/:id', async (req, res) => {
 })
 
 // adding new staff ======================================================================================================================================
-
-
 app.post('/Admin/addnewstaff', async (req, res) => {
     const { staff_id,
         staff_pass,
@@ -289,8 +282,7 @@ app.post('/Admin/ncourse', async (req, res) => {
     }
 });
 
-//=================================================================================================================================================
-//display all staff detiles
+////display all staff detiles=================================================================================================================================================
 app.get('/Admin/stafflist', async (req, res) => {
     try {
         const astaffD = await CourseMaping.findAll();
@@ -301,8 +293,7 @@ app.get('/Admin/stafflist', async (req, res) => {
     }
 });
 
-//==================================================================================================================================================
-//display all course detiles
+////display all course detiles==================================================================================================================================================
 app.get('/Admin/courselist', async (req, res) => {
     try {
         const CourseD = await StaffMaster.findAll();
@@ -313,63 +304,57 @@ app.get('/Admin/courselist', async (req, res) => {
     }
 });
 
-// mark supmit and display  =====================================================================================================================================
+// mark display  =====================================================================================================================================
+app.get("/mark", async (req, res) => {
 
+    try {
+        const { section, degree, category, semester } = req.query;
 
-app.get("/mark",async (req,res)=>{
+        console.log("check:", section, degree, category, semester);//
 
-    try{
-        const { section,degree,category,semester }=req.query;
-        console.log("check:",section,degree,category,semester);
-        const mark=await MarkEntry.findAll({where:{section:section,class_name:degree,Dept_type:category,Semester:semester}});
-        if(mark)
-        {
+        const mark = await MarkEntry.findAll({ where: { section: section, class_name: degree, Dept_type: category, Semester: semester } });
+        if (mark) {
             res.json(mark);
-            // res.status(200).json({success:true,message:"done",mark});
-
         }
-        else{
-            res.status(401).json({success:false,message:"error in db",mark});
+        else {
+            res.status(401).json({ success: false, message: "error in db", mark });
         }
     }
-    catch(err)
-    {
+    catch (err) {
         console.error(err);
     }
 });
 
-    //mark entry
-    app.put("/MarkEntry",async(req,res)=>{
-        const {students,context}=req.body;
+//mark entry into db
+app.put("/MarkEntry", async (req, res) => {
+    const { students, context } = req.body;//specify thinks - students,context - coman thinks
 
-        try{
-            for(const student of students)
-            {
+    try {
+        for (const student of students) {
             await MarkEntry.update({
-                    LOT:student.LOT,
-                    MOT:student.MOT,
-                    HOT:student.HOT,
-                    TOTAL:student.TOTAL},
-                    {where:{
-                        Register_number:student.Register_number,
-                        section:student.section,
-                        class_name:context.degree,
-                        Dept_type:context.category,
-                        Semester:context.semester,
+                LOT: student.LOT,
+                MOT: student.MOT,
+                HOT: student.HOT,
+                TOTAL: student.TOTAL
+            },
+                {
+                    where: {
+                        Register_number: student.Register_number,
+                        section: student.section,
+                        class_name: context.degree,
+                        Dept_type: context.category,
+                        Semester: context.semester,
                     }
                 }
             );
-            }
-        res.status(200).json({success:true,message:"done"});
-
         }
-        catch(err)
-        {
-            res.status(500).json({success:false,message:"failed"});
-            console.log(err);
-        }
+        res.status(200).json({ success: true, message: "done" });
+    }
+    catch (err) {
+        res.status(500).json({ success: false, message: "failed" });
+        console.log(err);
+    }
 
-    
 });
 app.listen(5000, () => {
     console.log("backend run on 5000")
