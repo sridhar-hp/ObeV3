@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import styles from './LoginPage.module.css';
 
-
 function LoginPage() {
     const [staffId, setStaffId] = useState("");
     const [staffPass, setStaffPass] = useState("");

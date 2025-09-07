@@ -7,7 +7,7 @@ import axios from "axios";
 
 function MarkEntry() {
 
-    const [markEntry, setMarkEntry] = useState({});
+    // const [markEntry, setMarkEntry] = useState({});
     const [detils, setDetiles] = useState([]);
 
     const location = useLocation();
@@ -15,40 +15,38 @@ function MarkEntry() {
 
     console.log("state===>", state);
     useEffect(() => {
-  
+
         if (state) {
             const displaymark = async () => {
                 const res = await axios.get("http://localhost:5000/mark", { params: state })//state
-                  console.log("Frontend sent params:", state);
+                console.log("Frontend send:", state);
                 console.log("Backend response:", res.data);
                 setDetiles(res.data);
             }
             displaymark();
         }
-    }, [state]);
-//==============================================================================================================================
-    const handleentry = (index,field,value)=>{
-        const update=[...detils];
-        update[index][field]=value;
+    }, [state]);//
+    //==============================================================================================================================
+    const handleentry = (index, field, value) => {
+        const update = [...detils];
+        update[index][field] = value;
         setDetiles(update);
     }
 
-    const handlesupmit=async(event)=>
-    {
-        // event.preventDefault();
-        try{
-          const res =  await axios.put('http://localhost:5000/MarkEntry',
+    const handlesupmit = async () => {
+        try {
+            const res = await axios.put('http://localhost:5000/MarkEntry',
                 {
-                    students:detils,
-                    context:state});
+                    students: detils,//updated marks
+                    context: state//necessy feilds for finding the students in the db
+                });
             alert("mark entered succesfully");
         }
-        catch(err)
-        {
-            console.error("the mark entred:",err);
+        catch (err) {
+            console.error("the mark entred:", err);
         }
     }
-// ==============================================================================================================================
+    // ==============================================================================================================================
     return (
         <>
             <h1 className="dummy">this is mark entry page</h1>
@@ -77,16 +75,16 @@ function MarkEntry() {
                                 <td>{mdet.Register_number}</td>
                                 <td>{mdet.class_name}</td>
                                 <td>{mdet.section}</td>
-                                <td><input name="LOT" className="meibox" type="number" value={mdet.LOT || ""} onChange={(e)=>handleentry(index,"LOT",e.target.value)}/></td>
-                                <td><input name="MOT" className="meibox" type="number" value={mdet.MOT || ""} onChange={(e)=> handleentry(index,"MOT",e.target.value)}/></td>
-                                <td><input name="HOT" className="meibox" type="number" value={mdet.HOT || ""} onChange={(e)=>handleentry(index,"HOT",e.target.value)}/></td>
-                                <td><input name="TOTAL" className="meibox" type="number" value={mdet.TOTAL || ""} onChange={(e)=>handleentry(index,"TOTAL",e.target.value)}/></td>
+                                <td><input name="LOT" className="meibox" type="number" value={mdet.LOT || ""} onChange={(e) => handleentry(index, "LOT", e.target.value)} /></td>
+                                <td><input name="MOT" className="meibox" type="number" value={mdet.MOT || ""} onChange={(e) => handleentry(index, "MOT", e.target.value)} /></td>
+                                <td><input name="HOT" className="meibox" type="number" value={mdet.HOT || ""} onChange={(e) => handleentry(index, "HOT", e.target.value)} /></td>
+                                <td><input name="TOTAL" className="meibox" type="number" value={mdet.TOTAL || ""} onChange={(e) => handleentry(index, "TOTAL", e.target.value)} /></td>
                             </tr>
                         ))}
 
                     </tbody>
                 </table>
-                                <button onClick={handlesupmit} className="me">submit</button>
+                <button onClick={handlesupmit} className="me">submit</button>
 
 
             </div>

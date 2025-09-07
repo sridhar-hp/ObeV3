@@ -104,7 +104,7 @@ function StaffMaping() {
         }
     }
 
-    const handleEditInput = (event) => {
+    const handleEditInput = (event) => {//this is displaying what we type in the input box
         const { name, value } = event.target;
         setEditStaff((prev) => ({ ...prev, [name]: value }));
     }

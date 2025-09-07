@@ -17,7 +17,6 @@ function Classes() {
             try {
                 const res = await axios.get(`http://localhost:5000/staff/${id}/classes`)
                 setCourses(res.data);
-
             }
             catch (err) {
                 console.log(err);
@@ -37,10 +36,10 @@ function Classes() {
                 key={index}                                 
 
                state={{                              
-                section:cours.section,//
-                degree:cours.degree,//
-                category:cours.category,//
-                semester:cours.semester//
+                section:cours.section,//section
+                degree:cours.degree,//class
+                category:cours.category,//sfm or aided
+                semester:cours.semester//sememster
                 }}>
                 
                     {cours.staff_name}
